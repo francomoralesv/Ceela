@@ -1,0 +1,46 @@
+{
+  "system": {
+    "os": "Linux",
+    "physical_cores": 4,
+    "logical_cores": 8,
+    "memory_gb": 15.25
+  },
+  "gunicorn": {
+    "workers": 9,
+    "threads": 3,
+    "workers_io_bound": 13,
+    "workers_cpu_bound": 9
+  },
+  "postgresql": {
+    "shared_buffers": "3GB",
+    "effective_cache_size": "7GB",
+    "work_mem": "26MB",
+    "maintenance_work_mem": "780MB",
+    "max_worker_processes": 4,
+    "max_parallel_workers": 4,
+    "max_parallel_workers_per_gather": 2,
+    "max_connections": 200
+  },
+  "redis": {
+    "maxmemory": "1gb",
+    "maxmemory_policy": "allkeys-lru"
+  },
+  "docker_limits": {
+    "postgres": {
+      "cpus": 2,
+      "memory": "3G"
+    },
+    "redis": {
+      "cpus": 1,
+      "memory": "1G"
+    },
+    "app": {
+      "cpus": 4,
+      "memory": "7G"
+    },
+    "frontend": {
+      "cpus": 2,
+      "memory": "1G"
+    }
+  }
+}

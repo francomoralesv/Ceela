@@ -1,0 +1,7 @@
+.claude
+.idea
+node_modules/
+.next
+.dist
+venv
+.env

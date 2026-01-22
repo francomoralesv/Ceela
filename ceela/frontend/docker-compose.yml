@@ -1,0 +1,11 @@
+  
+services:
+  chile_web:
+      build:
+        context: .
+        dockerfile: Dockerfile
+        #image: isvgxd/chile_frontend:latest
+      container_name: chile_web
+      restart: unless-stopped
+      ports:
+        - "8003:3000"

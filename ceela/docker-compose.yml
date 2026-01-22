@@ -1,0 +1,203 @@
+services:
+  # PostgreSQL Database
+  postgres:
+    build:
+      context: .
+      dockerfile: Dockerfile.postgres
+    container_name: ceela-postgres
+    environment:
+      POSTGRES_DB: energy_efficiency
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: vgBwQe77JCblzJFM
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - "15432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 3G
+        reservations:
+          cpus: '1'
+          memory: 2G
+    command: >
+      postgres
+      -c max_connections=200
+      -c shared_buffers=3GB
+      -c effective_cache_size=7GB
+      -c maintenance_work_mem=780MB
+      -c checkpoint_completion_target=0.9
+      -c wal_buffers=16MB
+      -c default_statistics_target=100
+      -c random_page_cost=1.1
+      -c effective_io_concurrency=200
+      -c work_mem=26MB
+      -c min_wal_size=1GB
+      -c max_wal_size=4GB
+      -c max_worker_processes=4
+      -c max_parallel_workers_per_gather=2
+      -c max_parallel_workers=4
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d energy_efficiency"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - ceela-network
+
+  # Redis Cache and Message Broker
+  redis:
+    image: redis:7-alpine
+    container_name: ceela-redis
+    ports:
+      - "16379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+    command: >
+      redis-server
+      --maxmemory 1gb
+      --maxmemory-policy allkeys-lru
+      --save 60 1000
+      --appendonly yes
+      --tcp-backlog 511
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - ceela-network
+
+  # Frontend Application
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        BUILD_ENV: production
+        NEXT_PUBLIC_API_ENDPOINT: https://backend.cidee.org
+        NEXT_PUBLIC_APP_NAME: Frontend
+        AWS_PLACE_INDEX_NAME: CeelaIndexPlace
+        PLACES_API_KEY: "v1.public.eyJqdGkiOiJhY2Y4NTk0MS0zYTRlLTQ3NGMtYjJiMS01ZWQzNzE5YTA5YjIifV04joOqRX9E0VfrGxt0lzXKENVU-JjJsFBRofas_g24gTEwoE3dSyYZc4L-WlVRb3TjrgW7sP2wExc1bThTyZ3GnyTc_h741cJk5JVCuMkt2ArvA7DtyrbLCodPdmxdWn71VGeRZcUNT05bLbG98k7IoiZf5z0Qk0gVZ4BsZzoD4TuKB4-h1O_4bw_2KGlC4jNX9yaG3OwM2XBnXtPnMbeqQyc_IUhKWR2DohWkPr630pw6_VZwPgoczhjx7r0Pln0WFh4VXF-_dMK2Y_WTfziDSmbpGOF1aOzqZyco9px4k4H6fVMhA-NHx8iGydSMYDabqhCxDjWg-M-MNgoeaXU.NjAyMWJkZWUtMGMyOS00NmRkLThjZTMtODEyOTkzZTUyMTBi"
+        AWS_REGION: us-east-2
+    container_name: ceela-frontend
+    environment:
+      - NODE_ENV=production
+      - BACKEND_URL=http://app:8000
+      - PLACES_API_KEY=v1.public.eyJqdGkiOiJhY2Y4NTk0MS0zYTRlLTQ3NGMtYjJiMS01ZWQzNzE5YTA5YjIifV04joOqRX9E0VfrGxt0lzXKENVU-JjJsFBRofas_g24gTEwoE3dSyYZc4L-WlVRb3TjrgW7sP2wExc1bThTyZ3GnyTc_h741cJk5JVCuMkt2ArvA7DtyrbLCodPdmxdWn71VGeRZcUNT05bLbG98k7IoiZf5z0Qk0gVZ4BsZzoD4TuKB4-h1O_4bw_2KGlC4jNX9yaG3OwM2XBnXtPnMbeqQyc_IUhKWR2DohWkPr630pw6_VZwPgoczhjx7r0Pln0WFh4VXF-_dMK2Y_WTfziDSmbpGOF1aOzqZyco9px4k4H6fVMhA-NHx8iGydSMYDabqhCxDjWg-M-MNgoeaXU.NjAyMWJkZWUtMGMyOS00NmRkLThjZTMtODEyOTkzZTUyMTBi
+      - AWS_PLACE_INDEX_NAME=CeelaIndexPlace
+      - AWS_REGION=us-east-2
+      - UV_THREADPOOL_SIZE=8
+    volumes:
+      - ./frontend/public:/frontend/public/
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+    networks:
+      - ceela-network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  # Main Application
+  app:
+    build: .
+    container_name: ceela-app
+    ports:
+      - "18000:8000"
+    environment:
+      - APP_NAME=Ceela Backend
+      - APP_ENV=production
+      - DB_CONNECTION=postgresql://postgres:vgBwQe77JCblzJFM@postgres:5432/energy_efficiency
+      - PLACES_API_KEY=v1.public.eyJqdGkiOiJhY2Y4NTk0MS0zYTRlLTQ3NGMtYjJiMS01ZWQzNzE5YTA5YjIifV04joOqRX9E0VfrGxt0lzXKENVU-JjJsFBRofas_g24gTEwoE3dSyYZc4L-WlVRb3TjrgW7sP2wExc1bThTyZ3GnyTc_h741cJk5JVCuMkt2ArvA7DtyrbLCodPdmxdWn71VGeRZcUNT05bLbG98k7IoiZf5z0Qk0gVZ4BsZzoD4TuKB4-h1O_4bw_2KGlC4jNX9yaG3OwM2XBnXtPnMbeqQyc_IUhKWR2DohWkPr630pw6_VZwPgoczhjx7r0Pln0WFh4VXF-_dMK2Y_WTfziDSmbpGOF1aOzqZyco9px4k4H6fVMhA-NHx8iGydSMYDabqhCxDjWg-M-MNgoeaXU.NjAyMWJkZWUtMGMyOS00NmRkLThjZTMtODEyOTkzZTUyMTBi
+      - AWS_PLACE_INDEX_NAME=CeelaIndexPlace
+      - AWS_REGION=us-east-2
+      - LOGGER_ENDPOINT=http://217.77.15.104:3001/
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_DB=0
+      - APP_HOST=0.0.0.0
+      - APP_PORT=8000
+      - APP_WORKERS=9
+      - APP_TIMEOUT=1800
+      - APP_LOG_LEVEL=info
+      - WEB_CONCURRENCY=9
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./:/app/
+    restart: unless-stopped
+    cpus: '12'
+    deploy:
+      resources:
+        limits:
+          cpus: '12'
+          memory: 7G
+        reservations:
+          cpus: '12'
+          memory: 6G
+    healthcheck:
+      test: ["CMD-SHELL", "python -c 'import urllib.request; urllib.request.urlopen(\"http://localhost:8000/healthz\")' || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    networks:
+      - ceela-network
+
+  caddy:
+    image: caddy:2-alpine
+    container_name: ceela-caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    environment:
+      - ACME_EMAIL=franco.morales.v@gmail.com
+    networks:
+      - ceela-network
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  public_data:
+    driver: local
+  static_data:
+    driver: local
+  app_logs:
+    driver: local
+  worker_logs:
+    driver: local
+  caddy_data:
+  caddy_config:
+
+networks:
+  ceela-network:
+    driver: bridge

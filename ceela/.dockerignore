@@ -1,0 +1,68 @@
+# Environment files
+.env
+.env.local
+.env.production
+
+# Git files
+.git
+.gitignore
+.github
+
+# Build artifacts
+dist
+build
+*.egg-info
+
+# Python cache
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+venv
+env
+.venv
+
+# IDE files
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Documentation
+*.md
+DOCKER_SETUP.md
+
+# Docker files
+docker-compose.yml
+docker-compose.override.yml
+Dockerfile.temporal
+Dockerfile.worker
+
+# Scripts
+start.sh
+stop.sh
+# Permitir init-db.sh para PostgreSQL
+!init-db.sh
+
+# Logs
+logs
+*.log
+
+# Notebooks
+notebooks
+*.ipynb
+
+# Test files
+tests
+*.test.py
+
+# Temporary files
+tmp
+temp

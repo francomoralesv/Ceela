@@ -1,0 +1,449 @@
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+:root {
+  --font-family-base: "Noto Sans", sans-serif;
+  --font-size-base: 8px;
+  --font-size-heading: 2em;
+  --primary-color: #2ab0c5; /* Color principal, usado en títulos y botones */
+  --secondary-color: #bbc4cb; /* Color secundario, por ejemplo para hover en botones */
+  --background-color: #ebe6e670; /* Color de fondo */
+  --text-color: #333;
+  --muted-text: #d3d3d3;
+
+  /* Variables para botones */
+  --btn-save-bg: #3ca7b7;
+  --btn-save-hover-bg: #359ea7;
+  --btn-back-bg: #6b7280;
+  --btn-back-hover-bg: #4b5563;
+  --btn-delete-bg: #ef4444;
+  --btn-delete-hover-bg: #dc2626;
+}
+
+.material-icons {
+  font-size: 2rem; /* o el tamaño qfue desees */
+}
+* {
+  font-family: var(--font-family-base);
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: var(--font-family-base);
+  font-size: 0.8125rem; /* 13px converted to rem for better scaling */
+}
+
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  color: var(--text-color);
+  background-color: var(--background-color);
+  margin: 0;
+  padding: 0;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.loading-spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid var(--primary-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+.loading-text {
+  margin-top: 1rem;
+  color: #666;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-body-wrapper {
+  flex: 1;
+  display: flex;
+}
+
+.sidebar-wrapper {
+  position: fixed;
+  height: 100%;
+  z-index: 1000;
+}
+
+.page-body {
+  flex: 1;
+  margin-left: 6em;
+  padding: 20px;
+}
+
+/* Modifica los botones dentro de las de detalles */
+
+.btn-table {
+  display: inline-flex !important; /* Permite alinear elementos internos */
+  justify-content: center !important; /* Centra horizontalmente el contenido */
+  align-items: center !important; /* Centra verticalmente el contenido */
+  width: 1.3rem !important;
+  height: 2.3rem !important;
+  padding: 0.5rem !important;
+  margin: 0 0.3rem !important ;
+  /* Elimina los estilos de posicionamiento (si aún los tienes):
+  position: relative !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  */
+}
+.table th {
+  color: var(--primary-color) !important;
+}
+/* Modifica los botones dentro de las tablas  de lista de proyectos*/
+.btn-table-list {
+  width: 1.3rem !important;
+  height: 2.3rem !important;
+  padding: 0.5rem !important;
+  margin: 0 !important;
+}
+
+.btn-small.btn.btn-cancelIcon.btn-table {
+  background-color: #dc2626 !important;
+}
+
+.container-table-buttons {
+  display: flex;
+  justify-content: center !important; /* Centra los botones horizontalmente */
+  gap: 1rem;
+  gap: 0.5rem; /* Ajusta el espacio entre los botones */
+  padding: 0;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 0.5rem; /* Espacio entre botones, ajústalo según necesites */
+  justify-content: center; /* Si deseas que estén centrados */
+  align-items: center; /* Para centrar verticalmente si es necesario */
+}
+
+.dashboard-container {
+  width: 100%;
+  padding: 1rem;
+  max-width: 1800px;
+  margin: 0 auto;
+}
+.charts-card {
+  overflow: hidden;
+}
+.chart-container {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+.chart-wrapper {
+  position: relative;
+  height: 300px;
+  width: 100%;
+}
+.title-chart {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+  text-align: center;
+}
+@media (max-width: 1200px) {
+  .chart-wrapper {
+    height: 250px;
+  }
+}
+@media (max-width: 992px) {
+  .chart-wrapper {
+    height: 220px;
+  }
+}
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 0.5rem;
+  }
+  .chart-container {
+    padding: 0.75rem;
+  }
+  .chart-wrapper {
+    height: 200px;
+  }
+  .title-chart {
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 576px) {
+  .chart-wrapper {
+    height: 180px;
+  }
+}
+
+@media (max-width: 992px) {
+  .container-fluid {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 0 5px;
+  }
+  .col-lg-3 {
+    border-right: none;
+    border-bottom: 1px solid #ccc;
+  }
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .mb-3.mb-lg-0 {
+    margin-bottom: 1rem;
+  }
+  [style*="padding: 20px"] {
+    padding: 15px;
+  }
+}
+@media (max-width: 768px) {
+  .table {
+    font-size: 12px;
+  }
+  th,
+  td {
+    padding: 8px;
+  }
+  [style*="height: 390px"] {
+    height: 300px;
+  }
+}
+.no-hover {
+  transition: none !important;
+  cursor: default !important;
+  pointer-events: none !important;
+}
+.no-hover:hover {
+  box-shadow: none !important;
+  transform: none !important;
+}
+.wizard-4 {
+  @media only screen and (max-width: 767.98px) {
+    ul.anchor {
+      width: 100%;
+      height: auto;
+      padding: 30px;
+    }
+    .step-container {
+      width: 100%;
+    }
+  }
+}
+
+@media only screen and (max-width: 991px) and (min-width: 768px) {
+  .page-wrapper.compact-wrapper.material-type::before {
+    height: 230px;
+  }
+  .page-wrapper.compact-wrapper.material-type .page-header {
+    width: calc(100% - 60px) !important;
+    margin: 50px auto 0 !important;
+  }
+  .page-wrapper.compact-wrapper.material-type .page-body-wrapper {
+    margin: 0 30px;
+  }
+  .page-wrapper.compact-wrapper.material-type
+    .page-body-wrapper
+    div.sidebar-wrapper {
+    left: 0;
+  }
+  .page-wrapper.compact-wrapper.material-type .page-body-wrapper .page-body {
+    margin-top: 0;
+  }
+}
+
+@media only screen and (max-width: 810px) {
+  .page-wrapper
+    .page-header
+    .header-wrapper
+    .nav-right
+    > ul
+    > li
+    .profile-media
+    .flex-grow-1 {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 767.98px) {
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .table-responsive table {
+    @media only screen and (max-width: 767.98px) {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+
+      table {
+        min-width: 800px;
+      }
+
+      .form-group {
+        margin-bottom: 1rem;
+      }
+
+      .input-group {
+        flex-wrap: wrap;
+      }
+    }
+  }
+
+  .card {
+    @media only screen and (max-width: 991px) {
+      margin-bottom: 1.5rem;
+
+      .card-header {
+        padding: 1rem;
+      }
+
+      .card-body {
+        padding: 1rem;
+      }
+    }
+
+    @media only screen and (max-width: 767.98px) {
+      .form-row {
+        flex-direction: column;
+
+        > [class*="col-"] {
+          padding-right: 15px;
+          padding-left: 15px;
+        }
+      }
+    }
+  }
+
+  .modal {
+    @media only screen and (max-width: 767.98px) {
+      .modal-dialog {
+        margin: 0.5rem;
+      }
+
+      .modal-content {
+        padding: 1rem;
+      }
+
+      .modal-header {
+        flex-direction: column;
+        align-items: flex-start;
+
+        .close {
+          margin: -1rem -1rem -1rem auto;
+        }
+      }
+    }
+  }
+}
+.breadcrumb-container {
+  width: 100%;
+}
+
+/* Para móviles (ajusta el ancho como necesites, aquí se pone auto) */
+@media (max-width: 768px) {
+  .breadcrumb-container {
+    width: auto;
+  }
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  font-family: "Material ICons";
+}
+
+.button-thermic-bridges {
+  margin: 0;
+  display: "flex";
+  align-items: "center";
+  justify-content: "center";
+  width: 2.5rem !important;
+  background-color: #359ea7 !important;
+}
+
+.nav-tabs .nav-link:not(.active) {
+  color: #bbc4cb !important;
+}
+
+.nav-pill-info {
+  background: white;
+  border-radius: 0 !important;
+  color: #359ea7 !important;
+}
+.nav-pill-info:hover {
+  /* border-bottom: 3px solid #359ea7; */
+  background: white !important;
+  border-radius: 0 !important;
+}
+.nav-pill-info.nav-link.active {
+  background: white !important;
+  border-bottom: 3px solid #359ea7;
+  border-radius: 0 !important;
+}
+
+table.tables-recints{
+  th{
+    min-width: 160px;
+  }
+  td{
+    height: 60px;
+  }
+}
+.tables-results{
+  th{
+    min-width: 100px;
+  }
+  td{
+    min-height: 60px;
+    height: 60px;
+  }
+  select{
+    max-width: 150px;
+
+  }
+}

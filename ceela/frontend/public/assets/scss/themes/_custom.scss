@@ -1,0 +1,22 @@
+/**=====================
+ custom CSS Start
+==========================**/
+// you can add your custom css here
+@import "../utils/_custom-variables";
+
+// Estilos para tabs horizontales con numeración
+.horizontal-tabs {
+  .nav-item {
+    button {
+      &.active {
+        color: $tab-active-color !important;
+        border-bottom-color: $tab-active-color !important;
+      }
+      
+      .tab-number {
+        margin-right: 5px;
+        font-weight: bold;
+      }
+    }
+  }
+}

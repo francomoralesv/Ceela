@@ -1,0 +1,36 @@
+# Temporal Dynamic Configuration for Development
+# This file contains dynamic configuration values for Temporal server
+frontend:
+  enableLogoutURL: false
+  disableWriteActions: false
+  enableAdvancedSearch: true
+
+# History configuration
+history:
+  numArchivalTasks: 1000
+  archivalTaskTimeout: 300s
+  enableArchivalCompression: true
+
+# System configuration
+system:
+  enableActivityEagerExecution: false
+  enableEagerWorkflowStart: false
+  enableCrossClusterOperations: false
+  
+# Retention configuration
+retention:
+  deletionEnabled: true
+  
+# Workflow configuration  
+workflow:
+  enableStrictValidation: false
+  
+# Matching configuration
+matching:
+  numTaskQueueReadPartitions: 4
+  numTaskQueueWritePartitions: 4
+  
+# Worker configuration
+worker:
+  buildIdScavengerEnabled: true
+  forceSearchAttributesCacheRefreshOnRead: false

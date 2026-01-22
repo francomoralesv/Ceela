@@ -1,0 +1,20 @@
+{
+    auto_https off   # No cert nonsense
+}
+
+:80 {   # Listen on port 80 for ANY host (including localhost)
+    # Everything goes to frontend (Next.js) by default
+    reverse_proxy frontend:3000 {
+        # Important headers for Next.js behind proxy
+        header_up X-Forwarded-Host {host}
+        header_up X-Forwarded-Proto {scheme}
+        header_up X-Forwarded-For {remote}
+        header_up Host {http.reverse_proxy.upstream.hostport}
+    }
+
+    # Optional: If your frontend makes API calls to /api/* or similar relative paths,
+    # uncomment and adjust to route them to backend
+    # handle_path /api/* {
+    #     reverse_proxy app:8000
+    # }
+}

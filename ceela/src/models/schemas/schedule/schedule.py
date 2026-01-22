@@ -1,0 +1,28 @@
+from sqlmodel import SQLModel, Field
+
+class ScheduleCreate(SQLModel):
+    
+    hour_1: int = Field(default=0, description="Valor para la hora 1")
+    hour_2: int = Field(default=0, description="Valor para la hora 2")
+    hour_3: int = Field(default=0, description="Valor para la hora 3")
+    hour_4: int = Field(default=0, description="Valor para la hora 4")
+    hour_5: int = Field(default=0, description="Valor para la hora 5")
+    hour_6: int = Field(default=0, description="Valor para la hora 6")
+    hour_7: int = Field(default=0, description="Valor para la hora 7")
+    hour_8: int = Field(default=0, description="Valor para la hora 8")
+    hour_9: int = Field(default=0, description="Valor para la hora 9")
+    hour_10: int = Field(default=0, description="Valor para la hora 10")
+    hour_11: int = Field(default=0, description="Valor para la hora 11")
+    hour_12: int = Field(default=0, description="Valor para la hora 12")
+    hour_13: int = Field(default=0, description="Valor para la hora 13")
+    hour_14: int = Field(default=0, description="Valor para la hora 14")
+    hour_15: int = Field(default=0, description="Valor para la hora 15")
+    hour_16: int = Field(default=0, description="Valor para la hora 16")
+    hour_17: int = Field(default=0, description="Valor para la hora 17")
+    hour_18: int = Field(default=0, description="Valor para la hora 18")
+    hour_19: int = Field(default=0, description="Valor para la hora 19")
+    hour_20: int = Field(default=0, description="Valor para la hora 20")
+    hour_21: int = Field(default=0, description="Valor para la hora 21")
+    hour_22: int = Field(default=0, description="Valor para la hora 22")
+    hour_23: int = Field(default=0, description="Valor para la hora 23")
+    hour_24: int = Field(default=0, description="Valor para la hora 24")

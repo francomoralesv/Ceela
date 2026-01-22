@@ -1,0 +1,660 @@
+- var theme_customizer      = true;
+- var sidebar               = true;
+- var apexmoment            = true;
+- var slick                 = true;
+- var header_slider         = true;
+- var animate               = true;
+- var page_datatable        = true;
+- var datatable             = true;
+- var page_datatable1       = true;
+- var scrollbar             = true;
+- var apex                  = true;
+- var dashboard_3           = true;
+- var date_picker           = true;
+- var coustom_calendar      = true;
+doctype html
+html(lang='en')
+  include ../../components/header-files
+  body
+    include ../../components/loader
+    include ../../components/taptop
+    // page-wrapper Start
+    #pageWrapper.page-wrapper.compact-wrapper
+      include ../../components/header
+      // Page Body Start
+      .page-body-wrapper
+        include ../../components/sidebar
+        .page-body
+          .container-fluid
+            .page-title
+              .row
+                .col-sm-6.p-0
+                  h3
+                    | Project Dashboard
+                .col-sm-6.p-0
+                  ol.breadcrumb
+                    li.breadcrumb-item
+                      a(href='index.html')                                        
+                        svg.stroke-icon
+                          use(href='../assets/svg/icon-sprite.svg#stroke-home')
+                    li.breadcrumb-item Dashboard
+                    li.breadcrumb-item.active Project
+          // Container-fluid starts
+          .container-fluid.project-dashboard
+            .row
+              .col-xl-9.col-xl-100.box-col-12
+                .row 
+                  .col-xl-4.col-lg-4.col-md-6
+                    .card.web-card
+                      .card-body
+                        .d-flex
+                          .header-top
+                            .mobile-app.bg-light-primary
+                              span
+                              svg
+                                use(href='../assets/svg/icon-sprite.svg#improvement')
+                            .flex-grow-1 
+                              h4 Web & mobile app
+                              span Dribble Presentation
+                          .dropdown.icon-dropdown
+                            button#userdropdown.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                              i.icon-more-alt
+                            .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown')
+                              a.dropdown-item(href='#') Weekly
+                              a.dropdown-item(href='#') Monthly
+                              a.dropdown-item(href='#') Yearly 
+                        .comment
+                          ul 
+                            li 
+                              svg
+                                use(href='../assets/svg/icon-sprite.svg#calendar')
+                              span June 18,2023
+                            li 
+                              svg
+                                use(href='../assets/svg/icon-sprite.svg#message')
+                              span 18
+                            li 
+                              svg
+                                use(href='../assets/svg/icon-sprite.svg#link')
+                              span 08
+                        .flex-shrink-0 
+                          .user-details.customers
+                            ul 
+                              li.d-inline-block
+                                img(src="../assets/images/dashboard-3/user/1.png", alt="user")
+                              li.d-inline-block
+                                img(src="../assets/images/dashboard-3/user/2.png", alt="user")
+                              li.d-inline-block
+                                img(src="../assets/images/dashboard-3/user/3.png", alt="user")
+                          .progress-value 
+                            span Progress
+                              span 70%
+                            .progress
+                              .progress-bar.bg-primary(role='progressbar', style='width: 70%', aria-valuenow='10', aria-valuemin='0', aria-valuemax='100')
+                  .col-xl-4.col-lg-4.col-md-6
+                    .card.web-card
+                      .card-body
+                        .d-flex.nft-card
+                          .header-top
+                            .mobile-app.bg-light-success
+                              span
+                              svg
+                                use(href='../assets/svg/icon-sprite.svg#NFT')
+                            .flex-grow-1 
+                              h4 NFT website design
+                              span Pinterest Promotion
+                          .dropdown.icon-dropdown
+                            button#userdropdown1.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                              i.icon-more-alt
+                            .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown1')
+                              a.dropdown-item(href='#') Weekly
+                              a.dropdown-item(href='#') Monthly
+                              a.dropdown-item(href='#') Yearly 
+                        .comment
+                          ul 
+                            li 
+                              svg
+                                use(href='../assets/svg/icon-sprite.svg#calendar')
+                              span June 15,2023
+                            li 
+                              svg
+                                use(href='../assets/svg/icon-sprite.svg#message')
+                              span 20
+                            li 
+                              svg
+                                use(href='../assets/svg/icon-sprite.svg#link')
+                              span 10
+                        .flex-shrink-0 
+                          .user-details.customers
+                            ul 
+                              li.d-inline-block
+                                img(src="../assets/images/dashboard-3/user/8.png", alt="user")
+                              li.d-inline-block
+                                img(src="../assets/images/dashboard-3/user/4.png", alt="user")
+                              li.d-inline-block
+                                img(src="../assets/images/dashboard-3/user/7.png", alt="user")
+                          .progress-value 
+                            span Progress
+                              span 60%
+                            .progress
+                              .progress-bar.bg-success(role='progressbar', style='width: 60%', aria-valuenow='10', aria-valuemin='0', aria-valuemax='100')
+                  .col-xl-4.col-lg-4.col-md-12
+                    .card.web-card
+                      .card-body
+                        .d-flex.twitter-card
+                          .header-top
+                            .mobile-app.bg-light-danger
+                              span
+                              svg
+                                use(href='../assets/svg/icon-sprite.svg#management')
+                            .flex-grow-1 
+                              h4 Project dashboard
+                              span Twitter Marketing
+                          .dropdown.icon-dropdown
+                            button#userdropdown2.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                              i.icon-more-alt
+                            .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown2')
+                              a.dropdown-item(href='#') Weekly
+                              a.dropdown-item(href='#') Monthly
+                              a.dropdown-item(href='#') Yearly 
+                        .comment
+                          ul 
+                            li 
+                              svg
+                                use(href='../assets/svg/icon-sprite.svg#calendar')
+                              span June 25,2023
+                            li 
+                              svg
+                                use(href='../assets/svg/icon-sprite.svg#message')
+                              span 30
+                            li 
+                              svg
+                                use(href='../assets/svg/icon-sprite.svg#link')
+                              span 12
+                        .flex-shrink-0 
+                          .user-details.customers
+                            ul 
+                              li.d-inline-block
+                                img(src="../assets/images/dashboard-3/user/9.png", alt="user")
+                              li.d-inline-block
+                                img(src="../assets/images/dashboard-3/user/5.png", alt="user")
+                              li.d-inline-block
+                                img(src="../assets/images/dashboard-3/user/6.png", alt="user")
+                          .progress-value 
+                            span Progress
+                              span 50%
+                            .progress
+                              .progress-bar.bg-danger(role='progressbar', style='width: 50%', aria-valuenow='10', aria-valuemin='0', aria-valuemax='100')
+                  .col-xl-8.col-lg-8
+                    .card
+                      .card-header.pb-0
+                        .header-top
+                          h4 Project Summary
+                          .dropdown.icon-dropdown
+                            button#userdropdown3.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                              i.icon-more-alt
+                            .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown3')
+                              a.dropdown-item(href='#') Weekly
+                              a.dropdown-item(href='#') Monthly
+                              a.dropdown-item(href='#') Yearly
+                      .card-body.pt-0.project-summary
+                        .table-responsive.custom-scrollbar
+                          table#project-summary.table.display(style='width:100%')
+                            thead
+                              tr
+                                th
+                                  .form-check
+                                    input.form-check-input(type='checkbox' value='')
+                                    label.form-check-label
+                                th Member Name
+                                th Project Type
+                                th Start Date
+                                th End Date
+                                th Progress
+                                th Status
+                            tbody
+                                tr
+                                  td
+                                    .form-check
+                                      input.form-check-input(type='checkbox' value='')
+                                      label.form-check-label
+                                  td
+                                    .d-flex
+                                      .flex-shrink-0
+                                        img(src='../assets/images/dashboard/user/2.png' alt="")
+                                      .flex-grow-1.ms-2
+                                        a(href="user-profile.html")
+                                          h6 Elle Amberson
+                                          span Developer 
+                                  td UI/UX Designer
+                                  td Nov 4,2023
+                                  td Dec 20,2023
+                                  td 
+                                    .progress
+                                      .progress-bar.bg-primary(role='progressbar', style='width: 50%', aria-valuenow='10', aria-valuemin='0', aria-valuemax='100')
+                                  td 
+                                    button.badge.badge-light-primary.rounded-pill.txt-primary Paid
+                                tr
+                                  td
+                                    .form-check
+                                      input.form-check-input(type='checkbox' value='')
+                                      label.form-check-label
+                                  td
+                                    .d-flex
+                                      .flex-shrink-0
+                                        img(src='../assets/images/dashboard/user/1.png' alt="")
+                                      .flex-grow-1.ms-2
+                                        a(href="user-profile.html")
+                                          h6 Anna Catmire
+                                          span Designer 
+                                  td Website Design
+                                  td Feb 20,2023
+                                  td Nov 7,2023
+                                  td 
+                                    .progress
+                                      .progress-bar.bg-secondary(role='progressbar', style='width: 50%', aria-valuenow='10', aria-valuemin='0', aria-valuemax='100')
+                                  td 
+                                    button.badge.badge-light-secondary.rounded-pill.txt-secondary Pending
+                                tr
+                                  td
+                                    .form-check
+                                      input.form-check-input(type='checkbox' value='')
+                                      label.form-check-label
+                                  td
+                                    .d-flex
+                                      .flex-shrink-0
+                                        img(src='../assets/images/dashboard/user/3.png' alt="")
+                                      .flex-grow-1.ms-2
+                                        a(href="user-profile.html")
+                                          h6 Laura Dagson
+                                          span Developer  
+                                  td Landing Page
+                                  td Nov 4,2023
+                                  td Dec 20,2023
+                                  td 
+                                    .progress
+                                      .progress-bar.bg-primary(role='progressbar', style='width: 50%', aria-valuenow='10', aria-valuemin='0', aria-valuemax='100')
+                                  td 
+                                    button.badge.badge-light-primary.rounded-pill.txt-primary Paid
+                                tr
+                                  td
+                                    .form-check
+                                      input.form-check-input(type='checkbox' value='')
+                                      label.form-check-label
+                                  td
+                                    .d-flex
+                                      .flex-shrink-0
+                                        img(src='../assets/images/dashboard/user/4.png' alt="")
+                                      .flex-grow-1.ms-2
+                                        a(href="user-profile.html")
+                                          h6 Rachel Green
+                                          span Designer 
+                                  td Marketing
+                                  td Oct 8, 2023
+                                  td Dec 10,2023
+                                  td 
+                                    .progress
+                                      .progress-bar.bg-danger(role='progressbar', style='width: 50%', aria-valuenow='10', aria-valuemin='0', aria-valuemax='100')
+                                  td 
+                                    button.badge.badge-light-danger.rounded-pill.txt-danger Overdue
+                  .col-4.col-lg-4.col-md-6.col-sm-12.col-12
+                    .row 
+                      .col-xl-12
+                        .card.upcoming-launch
+                          .card-header.pb-0
+                            .header-top
+                              h4 Upcoming Launch App
+                              .dropdown.icon-dropdown
+                                button#userdropdown4.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                                  i.icon-more-alt
+                                .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown4')
+                                  a.dropdown-item(href='#') Weekly
+                                  a.dropdown-item(href='#') Monthly
+                                  a.dropdown-item(href='#') Yearly
+                          .card-body
+                            .meeting
+                              .d-flex 
+                                h4 Dunzo App Launch
+                                span 11:30PM
+                              p Anna Catmire is hosting a meeting for dunzo app launch. endeavour to be there!
+                              .flex-shrink-0 
+                                a(href="to-do.html") 
+                                  .button.btn.btn-primary Set Reminder
+                                .user-details.customers
+                                  ul 
+                                    li.d-inline-block
+                                      img(src="../assets/images/dashboard-3/user/11.png", alt="user")
+                                    li.d-inline-block
+                                      img(src="../assets/images/dashboard-3/user/10.png", alt="user")
+                                    li.d-inline-block
+                                      .light-card
+                                        span.f-w-500 +9
+                      .col-12
+                        .card.design-card
+                          .card-body
+                            h5 WE ARE DESIGN AGENCY WORK WITH YOU
+                            p Bringing Well-crafted design and scalable infrastructure.
+                            a.btn(href="job-apply.html") Hire Us
+                  .col-xl-4.col-lg-4.col-md-6
+                    .card.budget-card
+                      .card-header.pb-0
+                        .header-top
+                          h4 Budget
+                          .dropdown.icon-dropdown
+                            button#userdropdown5.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                              i.icon-more-alt
+                            .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown5')
+                              a.dropdown-item(href='#') Weekly
+                              a.dropdown-item(href='#') Monthly
+                              a.dropdown-item(href='#') Yearly
+                      .card-body.pb-0
+                        .budget-spent
+                          span Budget Spent
+                          h2 $ 65,847.00
+                        a(href="learning-list-view.html") 
+                          .d-flex 
+                            .design-score.bg-light-primary
+                              svg
+                                use(href='../assets/svg/icon-sprite.svg#design')
+                            .flex-grow-1
+                              h6 Design
+                              span $ 35,842.00
+                            .flex-shrink-0 
+                              .design-menu 
+                                i.fa.fa-angle-right
+                        a(href="learning-list-view.html") 
+                          .d-flex 
+                            .design-score.bg-light-secondary
+                              svg.ms-1
+                                use(href='../assets/svg/icon-sprite.svg#development')
+                            .flex-grow-1
+                              h6 Development
+                              span $ 5,647.00
+                            .flex-shrink-0 
+                              .design-menu 
+                                i.fa.fa-angle-right
+                        a(href="learning-list-view.html") 
+                          .d-flex 
+                            .design-score.bg-light-danger
+                              svg.mt-2
+                                use(href='../assets/svg/icon-sprite.svg#other')
+                            .flex-grow-1
+                              h6 Others
+                              span $ 3,237.00
+                            .flex-shrink-0 
+                              .design-menu 
+                                i.fa.fa-angle-right
+                      .card-body.p-0
+                        #budget-chart.budget-chart  
+                  .col-xl-8.col-lg-8
+                    .card
+                      .card-header.pb-0
+                        .header-top
+                          h4 Project Created
+                          .dropdown.icon-dropdown
+                            button#userdropdown6.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                              i.icon-more-alt
+                            .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown6')
+                              a.dropdown-item(href='#') Weekly
+                              a.dropdown-item(href='#') Monthly
+                              a.dropdown-item(href='#') Yearly
+                      .card-body.p-0
+                        #revenuegrowth
+                  .col-xl-5.col-lg-5
+                    .card.today-task
+                      .card-header.pb-0
+                        .header-top
+                          h4 Today’s Tasks
+                          .dropdown.icon-dropdown
+                            button#userdropdown7.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                              i.icon-more-alt
+                            .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown7')
+                              a.dropdown-item(href='#') Weekly
+                              a.dropdown-item(href='#') Monthly
+                              a.dropdown-item(href='#') Yearly
+                      .card-body.clients-project
+                        .table-responsive.custom-scrollbar
+                          table.table.display(style='width:100%')
+                            thead
+                              tr
+                                th Task Name
+                                th Clients
+                                th Deadline
+                            tbody
+                              tr
+                                td 
+                                  a(href="projects.html") 
+                                    p Wireframes for  mobile app on rails platform
+                                td 
+                                  .user-details.customers
+                                    ul 
+                                      li.d-inline-block
+                                        img(src="../assets/images/dashboard-3/user/14.png", alt="user")
+                                      li.d-inline-block
+                                        img(src="../assets/images/dashboard-3/user/15.png", alt="user")
+                                      li.d-inline-block
+                                        img(src="../assets/images/dashboard-3/user/16.png", alt="user")
+                                td Nov 14,2023
+                              tr
+                                td 
+                                  a(href="projects.html") 
+                                    p Update the stakehoders with ne strategy
+                                td 
+                                  .user-details.customers
+                                    ul 
+                                      li.d-inline-block
+                                        img(src="../assets/images/dashboard-3/user/17.png", alt="user")
+                                      li.d-inline-block
+                                        img(src="../assets/images/dashboard-3/user/3.png", alt="user")
+                                      li.d-inline-block
+                                        img(src="../assets/images/dashboard-3/user/7.png", alt="user")
+                                td Apr 12,2023
+                              tr
+                                td 
+                                  a(href="projects.html") 
+                                    p Send key stakeholders update pricing guides
+                                td 
+                                  .user-details.customers
+                                    ul 
+                                      li.d-inline-block
+                                        img(src="../assets/images/dashboard-3/user/12.png", alt="user")
+                                      li.d-inline-block
+                                        img(src="../assets/images/dashboard-3/user/18.png", alt="user")
+                                      li.d-inline-block
+                                        img(src="../assets/images/dashboard-3/user/19.png", alt="user")
+                                td Nov 4,2023
+                              tr
+                                td 
+                                  a(href="projects.html")
+                                    p Add icons sprite sheet new marketing website
+                                td 
+                                  .user-details.customers
+                                    ul 
+                                      li.d-inline-block
+                                        img(src="../assets/images/dashboard-3/user/13.png", alt="user")
+                                      li.d-inline-block
+                                        img(src="../assets/images/dashboard-3/user/3.png", alt="user")
+                                      li.d-inline-block
+                                        img(src="../assets/images/dashboard-3/user/11.png", alt="user")
+                                td Dec 20,2023
+                  .col-xl-3.col-lg-3.col-md-4
+                    .card.progress-chart
+                      .card-body 
+                        #progress-chart.progress-card
+                        .d-flex 
+                          span On Progress
+                          h6.font-primary 75%
+                        h5 Workload Dashboard For CMS Website
+                        p Present eu dolor eu orc vehicula euismod.
+                  .col-xl-4.col-lg-4.col-md-8
+                    .row 
+                      .col-xl-12
+                        .card.pending-project
+                          .card-body 
+                            .d-flex 
+                              .flex-grow-1 
+                                a(href="projects.html")
+                                  h4 5 Projects
+                                  span In Progress 
+                                p.d-flex
+                                  span.bg-light-success.me-2
+                                    svg
+                                      use(href='../assets/svg/icon-sprite.svg#chart-up')
+                                  span.font-success.me-2 + 26.28%
+                                  span Since last month
+                              .flex-shrink-0 
+                                .bg-light-primary
+                                  svg
+                                      use(href='../assets/svg/icon-sprite.svg#danger')
+                      .col-xl-12
+                        .card.pending-project
+                          .card-body 
+                            .d-flex 
+                              .flex-grow-1 
+                                a(href="projects.html")
+                                  h4 10 Projects
+                                  span Completed
+                                p.d-flex
+                                  span.bg-light-danger.me-2
+                                    svg
+                                      use(href='../assets/svg/icon-sprite.svg#chart-down')
+                                  span.font-danger.me-2 - 46.28%
+                                  span Since last month
+                              .flex-shrink-0 
+                                .bg-light-secondary
+                                  svg
+                                      use(href='../assets/svg/icon-sprite.svg#check')
+                      .col-xl-12
+                        .card.pending-project
+                          .card-body 
+                            .d-flex 
+                              .flex-grow-1 
+                                a(href="projects.html")
+                                  h4 24 Projects
+                                  span Total
+                                p.d-flex
+                                  span.bg-light-success.me-2
+                                    svg
+                                      use(href='../assets/svg/icon-sprite.svg#chart-up')
+                                  span.font-success.me-2 + 36.28%
+                                  span Since last month
+                              .flex-shrink-0 
+                                .bg-light-danger
+                                  svg
+                                      use(href='../assets/svg/icon-sprite.svg#stroke-charts')
+              .col-xxl-3.col-xl-100.box-col-12.ps-4.pe-4.right-background
+                .row.bg-light.p-4.h-100
+                  .col-xl-12.col-xl-50.box-col-6.pe-30.ps-20
+                    .row 
+                      .col-xl-12.p-0.pe-30.ps-20
+                        .card.upcoming-project
+                          .card-body 
+                            a(href="projects.html") 
+                              .d-flex
+                                h4 Upcoming Projects
+                                .flex-shrink-0 
+                                  svg
+                                    use(href='../assets/svg/icon-sprite.svg#add')
+                      .col-xl-12.col-xl-100.p-0.pe-30.ps-20
+                        .card.redesign
+                          .card-body
+                            .header-top
+                              h6.font-primary Brooklyn Simmons
+                              .dropdown.icon-dropdown
+                                button#userdropdown8.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                                  i.icon-more-alt
+                                .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown8')
+                                  a.dropdown-item(href='#') Weekly
+                                  a.dropdown-item(href='#') Monthly
+                                  a.dropdown-item(href='#') Yearly
+                            h5 Redesign kripton mobile app
+                            .flex-shrink-0
+                              svg 
+                                use(href='../assets/svg/icon-sprite.svg#calendar')
+                              span Created on Jan 10,2023
+                            a(href="projectcreate.html") 
+                              .d-flex
+                                .deadline 
+                                  svg 
+                                    use(href='../assets/svg/icon-sprite.svg#timer')
+                                .flex-grow-1 
+                                  span Deadline
+                                  h6 Tuesday, Sep 20th 2023
+                      .col-xl-12.col-xl-100.p-0.pe-30.ps-20
+                        .card.redesign
+                          .card-body
+                            .header-top
+                              h6.font-primary Anna Catmireo
+                              .dropdown.icon-dropdown
+                                button#userdropdown9.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                                  i.icon-more-alt
+                                .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown9')
+                                  a.dropdown-item(href='#') Weekly
+                                  a.dropdown-item(href='#') Monthly
+                                  a.dropdown-item(href='#') Yearly
+                            h5 Business app landing page
+                            .flex-shrink-0
+                              svg 
+                                use(href='../assets/svg/icon-sprite.svg#calendar')
+                              span Created on Dec 19,2023
+                            a(href="projectcreate.html") 
+                              .d-flex
+                                .bussiness-app 
+                                  svg 
+                                    use(href='../assets/svg/icon-sprite.svg#timer')
+                                .flex-grow-1 
+                                  span Deadline
+                                  h6 Monday, Dec 10th 2023
+                      .col-xl-12.col-xl-100.p-0.pe-30.ps-20
+                        .card.redesign
+                          .card-body
+                            .header-top
+                              h6.font-primary Laurs Dargerta
+                              .dropdown.icon-dropdown
+                                button#userdropdown10.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                                  i.icon-more-alt
+                                .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown10')
+                                  a.dropdown-item(href='#') Weekly
+                                  a.dropdown-item(href='#') Monthly
+                                  a.dropdown-item(href='#') Yearly
+                            h5 NFT web landing page
+                            .flex-shrink-0
+                              svg 
+                                use(href='../assets/svg/icon-sprite.svg#calendar')
+                              span Created on Dec 19,2023
+                            a(href="projectcreate.html") 
+                              .d-flex
+                                .nft-web 
+                                  svg 
+                                    use(href='../assets/svg/icon-sprite.svg#timer')
+                                .flex-grow-1 
+                                  span Deadline
+                                  h6 Tuesday, May 20th 2023
+                  .col-xl-12.col-xl-50.box-col-6.p-0
+                    .card.mb-0.upcoming-meeting
+                      .card-header
+                        .header-top
+                          h4 Upcoming Meeting
+                          .dropdown.icon-dropdown
+                            button#userdropdown11.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                              i.icon-more-alt
+                            .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown11')
+                              a.dropdown-item(href='#') Weekly
+                              a.dropdown-item(href='#') Monthly
+                              a.dropdown-item(href='#') Yearly 
+                      .card-body.p-0.pe-3 
+                        .default-datepicker
+                          .datepicker-here(data-language='en')
+                        .today-weather 
+                          .d-flex 
+                            img(src="../assets/images/dashboard-3/sun.gif", alt="user")
+                            span Today san Fransico,CA
+                            .flex-grow-1 
+                              h6 Jun,07 
+                        h4.p-3 Upcoming Events
+                        .timeline-calendar.custom-scrollbar
+                          div#calendar-container(class="custom-calendar")
+                            div#calendar(class="time-line")
+          // Container-fluid Ends
+        include ../../components/footer 
+    include ../../components/footer-files

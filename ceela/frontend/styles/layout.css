@@ -1,0 +1,13 @@
+.disabled-button-wrapper {
+  cursor: not-allowed !important;
+  pointer-events: all !important;
+}
+
+.disabled-button-wrapper .calculate-button {
+  opacity: 0.6;
+}
+
+.disabled-button-wrapper .calculate-button:hover {
+  opacity: 0.6;
+  background-color: orange !important; /* Keep the original orange color even on hover */
+}

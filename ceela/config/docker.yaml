@@ -1,0 +1,79 @@
+log:
+  stdout: true
+  level: info
+
+persistence:
+  defaultStore: default
+  visibilityStore: visibility
+  datastores:
+    default:
+      sql:
+        pluginName: "postgres"
+        databaseName: "energy_efficiency"
+        connectAddr: "svgdev.tech:5455"
+        connectProtocol: "tcp"
+        user: "prod_user"
+        password: "7c2563c53db89161cc4f44b074cbfd110387f233316374e7e2ecfdf1405b7e4f"
+        maxConns: 20
+        maxConnLifetime: "1h"
+        tls:
+          enabled: false
+    visibility:
+      sql:
+        pluginName: "postgres"
+        databaseName: "energy_efficiency"
+        connectAddr: "svgdev.tech:5455"
+        connectProtocol: "tcp"
+        user: "prod_user"
+        password: "7c2563c53db89161cc4f44b074cbfd110387f233316374e7e2ecfdf1405b7e4f"
+        maxConns: 20
+        maxConnLifetime: "1h"
+        tls:
+          enabled: false
+
+global:
+  membership:
+    maxJoinDuration: 30s
+    broadcastAddress: "127.0.0.1"
+  pprof:
+    port: 7936
+
+services:
+  frontend:
+    rpc:
+      grpcPort: 7233
+      membershipPort: 6933
+      bindOnIP: "0.0.0.0"
+  matching:
+    rpc:
+      grpcPort: 7235
+      membershipPort: 6935
+      bindOnIP: "0.0.0.0"
+  history:
+    rpc:
+      grpcPort: 7234
+      membershipPort: 6934
+      bindOnIP: "0.0.0.0"
+  worker:
+    rpc:
+      grpcPort: 7239
+      membershipPort: 6939
+      bindOnIP: "0.0.0.0"
+
+clusterMetadata:
+  enableGlobalNamespace: false
+  failoverVersionIncrement: 10
+  masterClusterName: "active"
+  currentClusterName: "active"
+  clusterInformation:
+    active:
+      enabled: true
+      initialFailoverVersion: 1
+      rpcAddress: "127.0.0.1:7233"
+
+dcRedirectionPolicy:
+  policy: "noop"
+
+dynamicConfigClient:
+  filepath: "/etc/temporal/config/dynamicconfig"
+  pollInterval: "60s"

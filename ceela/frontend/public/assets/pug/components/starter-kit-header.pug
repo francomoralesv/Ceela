@@ -1,0 +1,313 @@
+// Page Header Start
+.page-header
+  .header-wrapper.row.m-0
+    .header-logo-wrapper.col-auto.p-0
+      .logo-wrapper
+        a(href='index.html')
+          img.img-fluid.for-light(src='../assets/images/logo/logo-1.png', alt='')
+          img.img-fluid.for-dark(src='../assets/images/logo/logo.png', alt='')
+      .toggle-sidebar
+        svg.sidebar-toggle 
+          use(href='../assets/svg/icon-sprite.svg#stroke-animation')
+    .left-header.col-xxl-5.col-xl-6.col-auto.box-col-6.horizontal-wrapper.p-0
+      .left-menu-header
+        ul.app-list
+          li.onhover-dropdown
+            .app-menu 
+              i(data-feather="folder-plus")
+            ul.onhover-show-div.left-dropdown
+              li 
+                a(href="file-manager.html") File Manager
+              li 
+                a(href="kanban.html")  Kanban board
+              li 
+                a(href="social-app.html")  Social App
+              li 
+                a(href="bookmark.html")  Bookmark
+        ul.header-left 
+          li.onhover-dropdown
+            span.f-w-500
+              svg
+                use(href='../assets/svg/icon-sprite.svg#fill-bonus')
+              | Bonus Ui
+            ul.onhover-show-div.left-dropdown
+              li
+                a(href='scrollable.html') Scrollable
+              li
+                a(href='tree.html') Tree view
+              li
+                a(href='toasts.html') Toasts
+              li
+                a(href='rating.html') Rating
+              li
+                a(href='dropzone.html') dropzone
+              li
+                a(href='tour.html') Tour
+              li
+                a(href='sweet-alert2.html') SweetAlert2
+              li
+                a(href='modal-animated.html') Animated Modal
+              li
+                a(href='owl-carousel.html') Owl Carousel
+              li
+                a(href='ribbons.html') Ribbons
+              li
+                a(href='pagination.html') Pagination
+              li
+                a(href='breadcrumb.html') Breadcrumb
+              li
+                a(href='range-slider.html') Range Slider
+              li
+                a(href='image-cropper.html') Image cropper
+              li
+                a(href='basic-card.html') Basic Card
+              li
+                a(href='creative-card.html') Creative Card
+              li
+                a(href='dragable-card.html') Draggable Card
+              li
+                a(href='timeline-v-1.html') Timeline
+          li.onhover-dropdown
+            span.f-w-500
+              svg
+                use(href='../assets/svg/icon-sprite.svg#fill-Grid')
+              | Level Menu
+            ul.onhover-show-div.left-dropdown
+              li
+                a(href='add-products.html') Add Product
+              li
+                a(href='product.html') Product
+              li
+                a(href='product-page.html') Product page
+              li
+                a(href='list-products.html') Product list
+              li
+                a(href='payment-details.html') Payment Details
+              li
+                a(href='order-history.html') Order History
+              li
+                a(href='invoice-template.html') Invoice
+              li
+                a(href='cart.html') Cart
+              li
+                a(href='list-wish.html') Wishlist
+              li
+                a(href='checkout.html') Checkout
+              li
+                a(href='pricing.html') Pricing  
+          li.onhover-dropdown 
+            span.f-w-500
+              svg
+                use(href='../assets/svg/icon-sprite.svg#fill-Perk-Ui')
+              | Project
+            ul.onhover-show-div.left-dropdown
+              li
+                a(href='projects.html') Project List
+              li
+                a(href='projectcreate.html') Create new
+          li.onhover-dropdown.p-0
+            span.f-w-500
+              svg
+                use(href='../assets/svg/icon-sprite.svg#fill-bonus')
+              | Blog
+            ul.onhover-show-div.left-dropdown
+              li
+                a(href='blog.html') Blog Details
+              li
+                a(href='blog-single.html') Blog Single
+              li
+                a(href='add-post.html') Add Post
+    .nav-right.col-xxl-7.col-xl-6.col-auto.box-col-6.pull-right.right-header.p-0.ms-auto
+      ul.nav-menus
+        li.serchinput
+          .serchbox
+            svg
+              use(href='../assets/svg/icon-sprite.svg#fill-search')
+          .form-group.search-form
+              input(type="text" placeholder="Search here...")
+        li
+          .form-group.w-100
+            .Typeahead.Typeahead--twitterUsers
+              .u-posRelative.d-flex
+                svg.search-bg.svg-color.me-2
+                  use(href='../assets/svg/icon-sprite.svg#fill-search')
+                input.demo-input.py-0.Typeahead-input.form-control-plaintext.w-100(type='text' placeholder='Search Dunzo ..' name='q' title='')
+        li.onhover-dropdown
+          .notification-box
+            svg
+              use(href='../assets/svg/icon-sprite.svg#fill-Bell')
+          .onhover-show-div.notification-dropdown
+            h6.f-18.mb-0.dropdown-title Notitications                               
+            ul
+              li.b-l-primary.bg-light-primary.border-4.mt-3
+                p.font-primary
+                  | Delivery processing 
+                  span.font-primary 10 min.
+              li.b-l-secondary.bg-light-secondary.border-4.mt-3
+                p.font-secondary
+                  | Order Complete
+                  span.font-secondary 1 hr
+              li.b-l-success.bg-light-success.border-4.mt-3
+                p.font-success
+                  | Tickets Generated
+                  span.font-success 3 hr
+              li.b-l-info.bg-light-info.border-4.mt-3
+                p.font-info
+                  | Delivery Complete
+                  span.font-info 6 hr
+              li
+                a.f-w-700(href="../template/private-chat.html") Check all
+        li.onhover-dropdown
+          svg
+            use(href='../assets/svg/icon-sprite.svg#fill-star')
+          .onhover-show-div.bookmark-flip
+            .flip-card
+              .flip-card-inner
+                .front
+                  h6.f-18.mb-0.dropdown-title Bookmark
+                  ul.bookmark-dropdown
+                    li
+                      .row
+                        .col-4.text-center
+                          .bookmark-content
+                            .bookmark-icon
+                              i(data-feather='file-text')
+                            span Forms
+                        .col-4.text-center
+                          .bookmark-content
+                            .bookmark-icon
+                              i(data-feather='user')
+                            span Profile
+                        .col-4.text-center
+                          .bookmark-content
+                            .bookmark-icon
+                              i(data-feather='server')
+                            span Tables
+                    li.text-center
+                      a.flip-btn#flip-btn.f-w-700(href="javascript:void(0)") Add New Bookmark
+                .back
+                  ul
+                    li
+                      .bookmark-dropdown.flip-back-content
+                        input(type='text' placeholder='search...')
+                    li
+                      a.f-w-700.d-block.flip-back#flip-back(href="javascript:void(0)")
+                        | Back
+        li.cart-nav.onhover-dropdown
+          .cart-box
+            svg
+              use(href='../assets/svg/icon-sprite.svg#fill-Buy')
+          .cart-dropdown.onhover-show-div
+            h6.f-18.mb-0.dropdown-title Cart
+            ul
+              li
+                .d-flex
+                  img.img-fluid.b-r-5.img-60(src="../assets/images/ecommerce/06.jpg", alt='')
+                  .flex-grow-1
+                    span Winter T-shirt
+                    h6 1 X $ 299.00
+                  .close-circle
+                    a(href='#')
+                      i.fa.fa-times
+              li
+                .d-flex
+                  img.img-fluid.b-r-5.img-60(src="../assets/images/ecommerce/02.jpg", alt='')
+                  .flex-grow-1
+                    span Men Shirt
+                    h6 1 X $ 299.00
+                  .close-circle
+                    a(href='#')
+                      i.fa.fa-times
+              li.total
+                h5.mb-0
+                  | Subtotal :
+                  span.f-right $299.00
+              li
+                a.view-cart(href='../template/cart.html')
+                  | View Cart
+                a.view-checkout.f-right(href='../template/checkout.html')
+                  | Checkout
+        li.onhover-dropdown
+          .message
+            svg
+              use(href='../assets/svg/icon-sprite.svg#fill-message')
+            span.rounded-pill.badge-secondary 
+          .onhover-show-div.message-dropdown
+            h6.f-18.mb-0.dropdown-title Message                               
+            ul
+              li
+                .d-flex.align-items-start
+                  .message-img.bg-light-primary
+                    img(src="../assets/images/user/3.jpg" alt="")
+                  .flex-grow-1
+                    h5.mb-1
+                      a(href="../template/email_inbox.html") Helen Walter
+                    p Do you want to go see movie?
+                  .notification-right
+                    i(data-feather="x")
+              li
+                .d-flex.align-items-start
+                  .message-img.bg-light-primary
+                    img(src="../assets/images/user/6.jpg" alt="")
+                  .flex-grow-1
+                    h5.mb-1
+                      a(href="../template/email_inbox.html") Jason Borne
+                    p Thank you for rating us.
+                  .notification-right
+                    i(data-feather="x")
+              li
+                .d-flex.align-items-start
+                  .message-img.bg-light-primary
+                    img(src="../assets/images/user/10.jpg" alt="")
+                  .flex-grow-1
+                    h5.mb-1
+                      a(href="../template/email_inbox.html") Sarah Loren
+                    p What`s the project report update?
+                  .notification-right
+                    i(data-feather="x")
+              li
+                a.f-w-700(href="../template/email-application.html") Check all
+        li
+          .mode
+            svg
+              use(href='../assets/svg/icon-sprite.svg#fill-dark')
+        li.profile-nav.onhover-dropdown.p-0
+          .d-flex.align-items-center.profile-media
+            img.b-r-10.img-40(src='../assets/images/dashboard/profile.png', alt='')
+            .flex-grow-1
+              span Helen Walter
+              p.mb-0 Admin 
+                i.middle.fa.fa-angle-down
+          ul.profile-dropdown.onhover-show-div
+            li
+              a(href='../template/user-profile.html')
+                i(data-feather='user')
+                span Account 
+            li
+              a(href='../template/email-application.html')
+                i(data-feather='mail')
+                span Inbox
+            li
+              a(href='../template/task.html')
+                i(data-feather='file-text')
+                span Taskboard
+            li
+              a(href='../template/edit-profile.html')
+                i(data-feather='settings')
+                span Settings
+            li
+              a(href='../template/login.html')
+                i(data-feather='log-in') 
+                span Log in
+    //- .d-lg-none.mobile-toggle.pull-right
+    //-     i(data-feather='more-horizontal')
+    script.result-template(type='text/x-handlebars-template').
+      <div class="ProfileCard u-cf">                        
+      <div class="ProfileCard-avatar"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-airplay m-0"><path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"></path><polygon points="12 15 17 21 7 21 12 15"></polygon></svg></div>
+      <div class="ProfileCard-details">
+      <div class="ProfileCard-realName">{{name}}</div>
+      </div>
+      </div>
+    script.empty-template(type='text/x-handlebars-template').
+      <div class="EmptyMessage">Your search turned up 0 results. This most likely means the backend is down, yikes!</div>
+// Page Header Ends

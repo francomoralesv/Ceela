@@ -1,0 +1,677 @@
+- var theme_customizer      = true;
+- var morrischart           = true;
+- var apex                  = true;
+- var apexmoment            = true;
+- var dashboard_default     = true;
+- var owlcarousel           = true;
+- var page_owlcarousel      = true;
+- var page_datatable        = true;
+- var datatable             = true;
+- var page_datatable1       = true;
+- var notify                = true;
+- var animate               = true;
+- var typeahead             = true;
+- var typeahead_search      = true;
+- var sidebar               = true;
+- var scrollbar             = true;
+- var slick                 = true;
+- var header_slider         = true;
+- var height_equal          = true;
+doctype html
+html(lang='en')
+  include ../../components/header-files
+  body
+    include ../../components/loader
+    include ../../components/taptop
+    // page-wrapper Start
+    #pageWrapper.page-wrapper.compact-wrapper
+      include ../../components/header
+      // Page Body Start
+      .page-body-wrapper
+        include ../../components/sidebar
+        .page-body
+          .container-fluid         
+            .page-title
+              .row
+                .col-sm-6.p-0
+                  h3
+                    | Default Dashboard 
+                .col-sm-6.p-0
+                  ol.breadcrumb
+                    li.breadcrumb-item
+                      a(href='index.html')
+                        svg.stroke-icon
+                          use(href='../assets/svg/icon-sprite.svg#stroke-home')
+                    li.breadcrumb-item Dashboard
+                    li.breadcrumb-item.active Default      
+          // Container-fluid starts
+          .container-fluid.default-dashboard
+            .row
+              .col-xxl-4.col-xl-100.box-col-12.ps-4.pe-4.left-background
+                .row.bg-light.h-100.p-3.pt-4.pb-4
+                  .col-12.col-xl-50.box-col-6
+                    .card.welcome-card
+                      .card-body
+                        .d-flex 
+                          .flex-grow-1 
+                            h1 Hello, Ramirez
+                            p Welcome back! Let's start from where you left.
+                            a.btn(href="user-profile.html") View Profile
+                          .flex-shrink-0  
+                            img(src='../assets/images/dashboard/welcome.png' alt="")
+                  .col-12.col-xl-50.box-col-6
+                    .row 
+                      .col-12.col-lg-12.col-md-6.box-col-12
+                        .card.total-earning
+                          .card-body
+                            .row 
+                              .col-sm-7.box-col-7
+                                .d-flex
+                                  h3.font-primary Total Earning
+                                h5 $20.790
+                                span + 16.06% than last week
+                              .col-sm-5.box-col-5.p-0
+                                #income-chart
+                      .col-12.col-lg-12.col-md-6.box-col-12
+                        .card.total-earning
+                          .card-body.pb-0
+                            .row 
+                              .col-sm-7.box-col-7
+                                .d-flex
+                                  h3.font-primary Total Expense
+                                h5 $4,683.90
+                                span + 10.34% than last week
+                              .col-sm-5.box-col-5.p-0
+                                #expense-chart
+                  .col-xl-12.col-xl-50.col-md-6.box-col-6
+                    .card.news-update
+                      .card-header.pb-0
+                        .header-top
+                          h4 News & Update
+                          .dropdown.icon-dropdown
+                            button#userdropdown.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                              i.icon-more-alt
+                            .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown')
+                              a.dropdown-item(href='#') Weekly
+                              a.dropdown-item(href='#') Monthly
+                              a.dropdown-item(href='#') Yearly
+                      .card-body
+                        .d-flex.align-items-center.pt-0
+                          img(src='../assets/images/dashboard/1.jpg' alt="")
+                          .flex-grow-1.ms-3
+                            a(href="social-app.html")
+                              h5 Indonesian Navy Lauds Mental Perseverance of Teenager...
+                              span Today's News Headlines, Breaking...
+                          .flex-shrink-0 
+                            button.btn 10 Min ago 
+                        .d-flex.align-items-center
+                          img(src='../assets/images/dashboard/2.jpg' alt="")
+                          .flex-grow-1.ms-3
+                            a(href="social-app.html")
+                              h5 Why now may be the 'golden age' for Southeast asia start-ups...
+                              span Check out the latest news from...
+                          .flex-shrink-0 
+                            button.btn 2 Min ago 
+                        .d-flex.align-items-center
+                          img(src='../assets/images/dashboard/3.jpg' alt="")
+                          .flex-grow-1.ms-3
+                            a(href="social-app.html")
+                              h5 China's renewed crypto crackdown wipes nearly $400...
+                              span Technology and indian business news...
+                          .flex-shrink-0 
+                            button.btn 14 Min ago 
+                        .d-flex.align-items-center
+                          img(src='../assets/images/dashboard/4.jpg' alt="")
+                          .flex-grow-1.ms-3
+                            a(href="social-app.html")
+                              h5 Indonesian Navy Lauds Mental Perseverance of Teenager...
+                              span Today's News Headlines, Breaking...
+                          .flex-shrink-0 
+                            button.btn 17 Min ago 
+                  .col-xl-12.col-xl-50.col-md-6.box-col-6
+                    .card.product-chart.mb-0
+                      .card-header.pb-0
+                        .header-top
+                          h4 Product Stock
+                          .dropdown.icon-dropdown
+                            button#userdropdown1.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                              i.icon-more-alt
+                            .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown1')
+                              a.dropdown-item(href='#') Weekly
+                              a.dropdown-item(href='#') Monthly
+                              a.dropdown-item(href='#') Yearly
+                      .card-body.pb-0
+                        .d-flex
+                          h2.me-2 ($1,23,456)
+                          span Total Product Stock
+                        .product-chart
+                          .shap-block
+                            .rounded-shap.animate-bg-secondary
+                              i
+                              i
+                          #product-chart
+              .col-xl-8.col-xl-100.box-col-12
+                .row 
+                  .col-xxl-8.col-xl-100.box-col-12.proorder-xl-1
+                    .card
+                      .card-header.card-no-border.pb-0
+                        .header-top
+                          h4 Recent Order
+                          .dropdown.icon-dropdown
+                            button#userdropdown2.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                              i.icon-more-alt
+                            .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown2')
+                              a.dropdown-item(href='#') Weekly
+                              a.dropdown-item(href='#') Monthly
+                              a.dropdown-item(href='#') Yearly
+                      .card-body.pt-0.recent
+                        .table-responsive.custom-scrollbar
+                          table#resent-order.table.display(style='width:100%')
+                            thead
+                              tr
+                                th
+                                  .form-check
+                                    input.form-check-input(type='checkbox' value='')
+                                    label.form-check-label
+                                th Customers name
+                                th Order Date
+                                th items Name
+                                th Price
+                                th Status  
+                            tbody
+                                tr
+                                  td
+                                    .form-check
+                                      input.form-check-input(type='checkbox' value='')
+                                      label.form-check-label
+                                  td
+                                    .d-flex
+                                      .flex-shrink-0
+                                        img(src='../assets/images/dashboard/user/1.png' alt="")
+                                      .flex-grow-1.ms-2
+                                        a(href="user-profile.html")
+                                          h6 Elle Amberson
+                                          span #Gh3649K
+                                  td 
+                                    h6 15 Nov, 2022
+                                    span 02:45 PM
+                                  td Wood Chair
+                                  td $152
+                                  td 
+                                    button.badge.badge-light-primary.rounded-pill.txt-primary Paid
+                                tr
+                                  td
+                                    .form-check
+                                      input.form-check-input(type='checkbox' value='')
+                                      label.form-check-label
+                                  td
+                                    .d-flex
+                                      .flex-shrink-0
+                                        img(src='../assets/images/dashboard/user/2.png' alt="")
+                                      .flex-grow-1.ms-2
+                                        a(href="user-profile.html")
+                                          h6 Anna Catmire
+                                          span #A5647KB
+                                  td 
+                                    h6 25 Nov, 2022
+                                    span 01:24 PM
+                                  td Men Sneakers
+                                  td $652
+                                  td  
+                                    button.badge.badge-light-secondary.rounded-pill.txt-secondary Pending
+                                tr
+                                  td
+                                    .form-check
+                                      input.form-check-input(type='checkbox' value='')
+                                      label.form-check-label
+                                  td
+                                    .d-flex
+                                      .flex-shrink-0
+                                        img(src='../assets/images/dashboard/user/3.png' alt="")
+                                      .flex-grow-1.ms-2
+                                        a(href="user-profile.html")
+                                          h6 Laura Dagson
+                                          span #KO093M
+                                  td 
+                                    h6 26 Nov, 2022
+                                    span 12:34 PM
+                                  td Tree Stylish 
+                                  td $256
+                                  td 
+                                    button.badge.badge-light-primary.rounded-pill.txt-primary Paid
+                                tr
+                                  td
+                                    .form-check
+                                      input.form-check-input(type='checkbox' value='')
+                                      label.form-check-label
+                                  td
+                                    .d-flex
+                                      .flex-shrink-0
+                                        img(src='../assets/images/dashboard/user/4.png' alt="")
+                                      .flex-grow-1.ms-2
+                                        a(href="user-profile.html")
+                                          h6 Rachel Green
+                                          span #KMG403
+                                  td 
+                                    h6 28 Nov, 2022
+                                    span 10:27 PM
+                                  td Mi Watch
+                                  td $659
+                                  td 
+                                    button.badge.badge-light-danger.rounded-pill.txt-danger Overdue
+                  .col-xl-4.col-xl-50.col-md-6.box-col-6.proorder-xl-6
+                    .card.sales
+                      .card-header.card-no-border.pb-0
+                        .header-top
+                          h4 Sales Statistic
+                          .dropdown.icon-dropdown
+                            button#userdropdown3.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                              i.icon-more-alt
+                            .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown3')
+                              a.dropdown-item(href='#') Weekly
+                              a.dropdown-item(href='#') Monthly
+                              a.dropdown-item(href='#') Yearly
+                      .card-body
+                        #sales-chart
+                        .d-flex
+                          .flex-shrink-0.me-2
+                            span.bg-primary
+                          .flex-grow-1.me-2
+                            h5 View Count 
+                              strong 340k
+                          .flex-shrink-0.me-2
+                            span.bg-light-primary
+                          .flex-grow-1
+                            h5 View Count 
+                              strong 340k
+                        p Keep up info updated to increase the number of ionteractions
+                        button.btn See more
+                  .col-xxl-3.col-xl-50.col-sm-6.proorder-xl-2
+                    .card.since
+                      .card-body
+                        .customer-card.d-flex.b-l-primary.border-2
+                          div.ms-3
+                            h3.mt-1 Customers
+                            h5.mt-1 1.485
+                          .dashboard-user.bg-light-primary
+                            span
+                            svg
+                              use(href='../assets/svg/icon-sprite.svg#male')
+                        .customer.mt-2
+                          span.me-1
+                            svg
+                              use(href='../assets/svg/icon-sprite.svg#arrow-up')
+                          span.font-success.me-2 + 4.6%
+                          span Since last Week
+                  .col-xxl-3.col-xl-50.col-sm-6.proorder-xl-3
+                    .card.since
+                      .card-body.money
+                        .customer-card.d-flex.b-l-secondary.border-2
+                          div.ms-3
+                            h3.mt-1 Revenue
+                            h5.mt-1 $5.873
+                          .dashboard-user.bg-light-secondary
+                            span
+                            svg
+                              use(href='../assets/svg/icon-sprite.svg#money')
+                        .customer.mt-2
+                          span.me-1
+                            svg
+                              use(href='../assets/svg/icon-sprite.svg#arrow-up')
+                          span.font-success.me-2 + 3.10%
+                          span Since last Week
+                  .col-xxl-3.col-xl-50.col-sm-6.proorder-xl-4
+                    .card.since 
+                      .card-body.profit
+                        .customer-card.d-flex.b-l-danger.border-2
+                          div.ms-3
+                            h3.mt-1 Profit
+                            h5.mt-1 70%
+                          .dashboard-user.bg-light-danger
+                            span
+                            svg
+                              use(href='../assets/svg/icon-sprite.svg#profile')
+                        .customer.mt-2
+                          span.me-1
+                            svg
+                              use(href='../assets/svg/icon-sprite.svg#arrow-down')
+                          span.font-danger.me-2 + 2.3%
+                          span Since last Week
+                  .col-xxl-3.col-xl-50.col-sm-6.proorder-xl-5
+                    .card.since 
+                      .card-body.invoice-profit
+                        .customer-card.d-flex.b-l-success.border-2
+                          div.ms-3
+                            h3.mt-1 Invoices
+                            h5.mt-1 1.256
+                          .dashboard-user.bg-light-success
+                            span
+                            svg
+                              use(href='../assets/svg/icon-sprite.svg#invoice')
+                        .customer.mt-2
+                          span.me-1
+                            svg
+                              use(href='../assets/svg/icon-sprite.svg#arrow-up')
+                          span.font-success.me-2 + 6.3%
+                          span Since last Week
+                  .col-xxl-3.col-xl-50.col-md-6.box-col-6.proorder-xl-7
+                    .card.review-slider
+                      .card-header.card-no-border.pb-0
+                        .header-top
+                          h4 Review
+                          .dropdown.icon-dropdown
+                            button#userdropdown4.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                              i.icon-more-alt
+                            .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown4')
+                              a.dropdown-item(href='#') Weekly
+                              a.dropdown-item(href='#') Monthly
+                              a.dropdown-item(href='#') Yearly
+                      .card-body
+                        #owl-carousel-dashboard.owl-carousel.owl-theme
+                          .review
+                            div 
+                              img.img-fluid(src='../assets/images/dashboard/user/14.png', alt='')
+                              .review-content 
+                                h2 John Connor
+                              .d-flex
+                                h5 4.3
+                                p.pull-right.ms-2.me-2.mb-0.mt-0
+                                  i.fa.fa-star.font-secondary
+                                .flex-grow-1 
+                                  h5 136
+                              p “Best  Product i’ve been seen on market, best price, best quality! Overall Amazing!!!”
+                          .review
+                            .review
+                              div 
+                                img.img-fluid(src='../assets/images/dashboard/user/20.png', alt='')
+                                .review-content 
+                                  h2 Paul Miller
+                                .d-flex
+                                  h5 5.6
+                                  p.pull-right.ms-2.me-2.mb-0.mt-0
+                                    i.fa.fa-star.font-secondary
+                                  .flex-grow-1 
+                                    h5 120
+                                p “Best  Product i’ve been seen on market, best price, best quality! Overall Amazing!!!”
+                          .review
+                            .review
+                              div 
+                                img.img-fluid(src='../assets/images/dashboard/user/21.png', alt='')
+                                .review-content 
+                                  h2 Alen Lee
+                                .d-flex
+                                  h5 6.3
+                                  p.pull-right.ms-2.me-2.mb-0.mt-0
+                                    i.fa.fa-star.font-secondary
+                                  .flex-grow-1 
+                                    h5 140
+                                p “Best  Product i’ve been seen on market, best price, best quality! Overall Amazing!!!”
+                  .col-xxl-9.col-xl-100.box-col-12.proorder-xl-8
+                    .card.sales.overview
+                      .card-header.card-no-border.pb-0
+                        .header-top
+                          h4 Sales Overview
+                          .dropdown.icon-dropdown
+                            button#userdropdown5.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                              i.icon-more-alt
+                            .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown5')
+                              a.dropdown-item(href='#') Weekly
+                              a.dropdown-item(href='#') Monthly
+                              a.dropdown-item(href='#') Yearly
+                      .card-body.p-0 
+                        .sales-chart
+                          .shap-2
+                            .rounded-shap.animate-bg-secondary
+                              i
+                              i
+                          .shap-2
+                            .rounded-shap.animate-bg-secondary
+                              i
+                              i
+                          .shap-2
+                            .rounded-shap.animate-bg-secondary
+                              i
+                              i
+                          .shap-2
+                            .rounded-shap.animate-bg-secondary
+                              i
+                              i
+                          #sales-overview
+                  .row.proorder-xl-9.pe-0
+                    .col-xl-8.col-xl-100.col-md-12
+                      .row 
+                        .col-xxl-7.col-xl-50.col-md-6
+                          .card
+                            .card-header.card-no-border.pb-0
+                              .header-top
+                                h4 Active Tasks
+                                .dropdown.icon-dropdown
+                                  button#userdropdown6.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                                    i.icon-more-alt
+                                  .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown6')
+                                    a.dropdown-item(href='#') Weekly
+                                    a.dropdown-item(href='#') Monthly
+                                    a.dropdown-item(href='#') Yearly
+                            .card-body.active-task
+                              ul
+                                li.d-flex.pt-0
+                                  .flex-shrink-0
+                                    .form-check
+                                      input.form-check-input(type='checkbox' value='')
+                                      label.form-check-label
+                                  .flex-grow-1 
+                                    a(href="to-do.html")
+                                      h5 Regina Cooper
+                                    p Create userflow social application design
+                                  span.delete-option 
+                                    a(href="#")
+                                      svg.remove
+                                        use(href='../assets/svg/icon-sprite.svg#Delete')
+                                li.d-flex  
+                                  .flex-shrink-0
+                                    .form-check
+                                      input.form-check-input(type='checkbox' value='')
+                                      label.form-check-label
+                                  .flex-grow-1 
+                                    a(href="to-do.html")
+                                      h5 Install Appointment
+                                    p Homepage design for slimmuch product
+                                  span.delete-option 
+                                    a(href="#")
+                                      svg.remove
+                                        use(href='../assets/svg/icon-sprite.svg#Delete')
+                                li.d-flex  
+                                  .flex-shrink-0
+                                    .form-check
+                                      input.form-check-input(type='checkbox' value='')
+                                      label.form-check-label
+                                  .flex-grow-1 
+                                    a(href="to-do.html")
+                                      h5 Regina Cooper
+                                    p Interactive prototype design - web design
+                                  span.delete-option 
+                                    a(href="#")
+                                      svg.remove
+                                        use(href='../assets/svg/icon-sprite.svg#Delete')
+                                li.d-flex  
+                                  .flex-shrink-0
+                                    .form-check
+                                      input.form-check-input(type='checkbox' value='')
+                                      label.form-check-label
+                                  .flex-grow-1 
+                                    a(href="to-do.html")
+                                      h5 Regina Cooper
+                                    p Create Application design for topbuzz
+                                  span.delete-option 
+                                    a(href="#")
+                                      svg.remove
+                                        use(href='../assets/svg/icon-sprite.svg#Delete')
+                        .col-xxl-5.col-xl-50.col-md-6
+                          .card
+                            .card-header.card-no-border.pb-0
+                              .header-top
+                                h4 Total Investment
+                                .dropdown.icon-dropdown
+                                  button#userdropdown7.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                                    i.icon-more-alt
+                                  .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown7')
+                                    a.dropdown-item(href='#') Weekly
+                                    a.dropdown-item(href='#') Monthly
+                                    a.dropdown-item(href='#') Yearly
+                            .card-body.p-0.pb-3.pt-3
+                              .investment-card
+                                #Investment-chart
+                                ul 
+                                  li
+                                    h5 Total
+                                    span $ 5,8272
+                                  li  
+                                    h5 Monthly 
+                                    span $ 6,2456
+                                  li 
+                                    h5 Daily 
+                                    span $ 5,8704
+                        .col-xxl-12
+                          .card.leads
+                            .card-header.card-no-border.pb-0
+                              .header-top
+                                h4 Leads Status
+                                .dropdown.icon-dropdown
+                                  button#userdropdown8.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                                    i.icon-more-alt
+                                  .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown8')
+                                    a.dropdown-item(href='#') Weekly
+                                    a.dropdown-item(href='#') Monthly
+                                    a.dropdown-item(href='#') Yearly
+                            .card-body
+                              .lead-status
+                                ul 
+                                  li Customers
+                                  li.border-3.b-l-primary Lena Smith
+                                  li.border-3.b-l-secondary Nicol Green
+                                  li.border-3.b-l-danger.mb-0 Tom Taylor
+                                ul 
+                                  li Last Contacted
+                                  li June 14, 2023
+                                  li June 16, 2023
+                                  li.mb-0 June 18, 2023
+                                ul 
+                                  li Sales Rep
+                                  li 
+                                    img(src="../assets/images/dashboard/user/2.png", alt="")
+                                    | Paul Miller
+                                  li 
+                                    img(src="../assets/images/dashboard/user/1.png", alt="")
+                                    | Alen Lee
+                                  li.mb-0 
+                                    img(src="../assets/images/dashboard/user/3.png", alt="")
+                                    | Lucy White
+                                ul 
+                                  li Status
+                                  li.bg-light-primary.font-primary Deal Won
+                                  li.bg-light-secondary.font-secondary Intro Call
+                                  li.bg-light-danger.font-danger.mb-0 Stuck
+                                ul 
+                                  li Deal Value
+                                  li $ 200.2k
+                                  li $210k
+                                  li.mb-0 $70k
+                    .col-xl-4.col-xl-100.col-md-12.pe-0
+                      .row 
+                        .col-xl-12.col-md-6.notification-card
+                          .card.custom-scrollbar
+                            .card-header.card-no-border.pb-0
+                              .header-top
+                                h4 Notifications
+                                .dropdown.icon-dropdown
+                                  button#userdropdown9.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                                    i.icon-more-alt
+                                  .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown9')
+                                    a.dropdown-item(href='#') Weekly
+                                    a.dropdown-item(href='#') Monthly
+                                    a.dropdown-item(href='#') Yearly
+                            .card-body
+                              ul.notification-box
+                                li.d-flex  
+                                  .flex-shrink-0
+                                    img(src="../assets/images/dashboard/user/15.png", alt="")
+                                  .flex-grow-1 
+                                    a(href="private-chat.html")
+                                      h5 Paul Svensson invite you Prototyping
+                                    p 05 April, 2023 | 03:00 PM
+                                  .dropdown.icon-dropdown
+                                    button#userdropdown10.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                                      i.icon-more-alt
+                                    .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown10')
+                                      a.dropdown-item(href='#') Weekly
+                                      a.dropdown-item(href='#') Monthly
+                                      a.dropdown-item(href='#') Yearly
+                                li.d-flex  
+                                  .flex-shrink-0
+                                    img(src="../assets/images/dashboard/user/16.png", alt="")
+                                  .flex-grow-1 
+                                    a(href="private-chat.html")
+                                      h5 Adam Nolan mentioned you in UX Basics
+                                    p 04 April, 2023 | 05:00 PM
+                                  .dropdown.icon-dropdown
+                                    button#userdropdown11.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                                      i.icon-more-alt
+                                    .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown11')
+                                      a.dropdown-item(href='#') Weekly
+                                      a.dropdown-item(href='#') Monthly
+                                      a.dropdown-item(href='#') Yearly
+                                li.d-flex  
+                                  .flex-shrink-0
+                                    img(src="../assets/images/dashboard/user/17.png", alt="")
+                                  .flex-grow-1 
+                                    a(href="private-chat.html")
+                                      h5 Paul Morgan Commented in UI Design
+                                    p 05 April, 2023 | 02:00 PM
+                                  .dropdown.icon-dropdown
+                                    button#userdropdown12.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                                      i.icon-more-alt
+                                    .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown12')
+                                      a.dropdown-item(href='#') Weekly
+                                      a.dropdown-item(href='#') Monthly
+                                      a.dropdown-item(href='#') Yearly
+                                li.d-flex  
+                                  .flex-shrink-0
+                                    img(src="../assets/images/dashboard/user/18.png", alt="")
+                                  .flex-grow-1 
+                                    a(href="private-chat.html")
+                                      h5 Robert Babinski Said nothing important
+                                    p 01 April, 2023 | 06:00 PM
+                                  .dropdown.icon-dropdown
+                                    button#userdropdown13.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                                      i.icon-more-alt
+                                    .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown13')
+                                      a.dropdown-item(href='#') Weekly
+                                      a.dropdown-item(href='#') Monthly
+                                      a.dropdown-item(href='#') Yearly
+                        .col-xl-12.col-md-6.pe-0
+                          .card.statistics
+                            .card-header.card-no-border.pb-0
+                              .header-top
+                                h4 Statistics
+                                .dropdown.icon-dropdown
+                                  button#userdropdown14.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                                    i.icon-more-alt
+                                  .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown14')
+                                    a.dropdown-item(href='#') Weekly
+                                    a.dropdown-item(href='#') Monthly
+                                    a.dropdown-item(href='#') Yearly
+                            .card-body
+                              .d-flex 
+                                .flex-shrink-0 
+                                  h4 Weekly Target
+                                  span 25% achieved
+                                  .progress
+                                    .progress-bar.bg-primary(role='progressbar', style='width: 50%', aria-valuenow='10', aria-valuemin='0', aria-valuemax='100')
+                                .flex-grow-1 
+                                  h4 Montly Target
+                                  span 40% achieved
+                                  .progress
+                                    .progress-bar.bg-secondary(role='progressbar', style='width: 85%', aria-valuenow='10', aria-valuemin='0', aria-valuemax='100')
+          // Container-fluid Ends
+        include ../../components/footer        
+    include ../../components/footer-files

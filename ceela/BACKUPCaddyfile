@@ -1,0 +1,8 @@
+:80 {
+    # Frontend (Next.js) gets everything by default
+    reverse_proxy frontend:3000 {
+        # These help Next.js know it's behind a proxy (important for assets/links)
+        header_up X-Forwarded-Host {host}
+        header_up X-Forwarded-Proto {scheme}
+        header_up X-Forwarded-For {remote_host}
+    }

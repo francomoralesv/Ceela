@@ -1,0 +1,661 @@
+- var landing_sticky        = true;
+- var wow                   = true;
+- var animate               = true;
+- var scrollreveal          = true;
+- var pages_crollreveal     = true;
+- var owlcarousel           = true;
+- var page_owlcarousel      = true;
+doctype html
+html(lang='en')
+  include ../../components/landing-header
+  body.landing-page
+    include ../../components/taptop
+    // page-wrapper Start
+    div.landing-page
+      .lines
+        .line
+        .line
+        .line
+        .line
+        .line
+        .line
+        .line
+        .line
+        .line
+        .line
+      // Page Body Start            
+      header.landing-header
+        .custom-container
+          .row
+            .col-12
+              nav#navbar-example2.navbar.navbar-light.p-0
+                  a.navbar-brand(href="javascript:void(0)") 
+                    img.img-fluid(src="../assets/images/logo/logo.png" alt="")
+                  ul.landing-menu.nav.nav-pills
+                    li.nav-item.menu-back
+                      | back
+                      i.fa.fa-angle-right
+                    li.nav-item
+                      a.nav-link(href='#home') Home
+                    li.nav-item
+                      a.nav-link(href='#dashboard') Layout
+                    li.nav-item
+                      a.nav-link(href='#Applications') Applications
+                    li.nav-item
+                      a.nav-link(href='#faq-section') FAQ 
+                    li.nav-item
+                      a.nav-link(href='https://docs.pixelstrap.net/admin/dunzo/document/' target="_blank") Documentation
+                    li.nav-item
+                          a.nav-link(href='https://docs.google.com/forms/d/e/1FAIpQLSe6hKUXw_By-pg7yabL0FxoTM02ZPTxoXy8PE3yboRuUCuyeA/viewform' target="_blank") Hire us
+                  .buy-block
+                    a.btn-landing.btn-white(href="https://themeforest.net/user/pixelstrap/portfolio" target="_blank") Buy Now                           
+                    .toggle-menu
+                      i.fa.fa-bars
+      // header end
+      // landing home start
+      section#home.landing-home
+        .row
+          .col-12
+            .landing-home-contain
+              div
+                h2 The most effective and developer-friendly dashboard 
+                p  Every organization should use the Dunzo admin template. To build your own C-panel, it has all the functions and modules. using this template to market default, e-commerce, etc.
+                ul.btn-home-list
+                  li
+                    a.btn.btn-primary(href="index.html" target="_blank")
+                      span View Demo
+                  li
+                    a.btn.btn-secondary(href="https://docs.pixelstrap.net/admin/dunzo/document/" target="_blank")
+                      span Documentation
+            .row 
+              .col-2.landing-progress
+                .row.ps-3
+                  .col-12 
+                    .card.animation-card 
+                      img.img-fluid(src="../assets/images/landing/landing-home/card-3.png" alt="")
+                  .col-12 
+                    .card.animation-card 
+                      img.img-fluid(src="../assets/images/landing/landing-home/card-2.png" alt="")
+                  .col-12 
+                    .card.animation-card 
+                      img.img-fluid(src="../assets/images/landing/landing-home/card-1.png" alt="")
+              .col-4.landing-table
+                .row
+                  .col-6 
+                    .card.animation-card 
+                      img.img-fluid(src="../assets/images/landing/landing-home/card-5.gif" alt="")
+                  .col-6 
+                    .card.animation-card 
+                      img.img-fluid(src="../assets/images/landing/landing-home/card-6.png" alt="")
+                  .col-12 
+                    .card.animation-card 
+                      img.img-fluid(src="../assets/images/landing/landing-home/card-4.png" alt="")
+              .col-4.landing-chart
+                .row
+                  .col-12
+                    .card.animation-card.extra-shadow
+                      img.img-fluid(src="../assets/images/landing/landing-home/card-8.png" alt="")
+                  .col-12 
+                    .card.animation-card
+                      img.img-fluid(src="../assets/images/landing/landing-home/card-7.png" alt="")
+              .col-2.landing-card
+                .row.pe-3
+                  .col-12 
+                    .card.animation-card 
+                      img.img-fluid(src="../assets/images/landing/landing-home/card-10.png" alt="")
+                  .col-12 
+                    .card.animation-card 
+                      img.img-fluid(src="../assets/images/landing/landing-home/card-9.png" alt="")
+      // landing home end
+      // demo section start
+      section#dashboard.demo-section.section-py-space
+          .action 
+            .shap-block
+              .rounded-shap.animate-bg-secondary
+                i
+                i
+                i
+          .title 
+            h2.gradient-10 Dashboard Variations
+          .custom-container
+            .row.demo-block
+              .col-lg-4.col-md-6.wow.pulse
+                a(href="index.html" target="_blank")
+                  .demo-box
+                    .d-flex 
+                      .dashboard-icon.bg-light-primary
+                        svg
+                          use(href='../assets/svg/icon-sprite.svg#landing-home')
+                      .flex-grow-1.ms-2
+                        h6 Default Dashboard
+                      .flex-shrink-0 
+                        span View Demo
+                        svg
+                          use(href='../assets/svg/icon-sprite.svg#landing-arrow')
+                    .classic-effect 
+                      div 
+                        img.img-fluid.blur-up.lazyload.bg-img(src="../assets/images/landing/demo/default.jpg" alt="")
+                        span
+              .col-lg-4.col-md-6.wow.pulse   
+                a(href="dashboard-02.html" target="_blank")
+                  .demo-box
+                    .d-flex 
+                      .dashboard-icon.bg-light-primary
+                        svg
+                          use(href='../assets/svg/icon-sprite.svg#landing-ecommerce')
+                      .flex-grow-1.ms-2
+                        h6 Ecommerce Dashboard
+                      .flex-shrink-0 
+                        span View Demo
+                        svg
+                          use(href='../assets/svg/icon-sprite.svg#landing-arrow')
+                    .classic-effect 
+                      div 
+                        img.img-fluid.blur-up.lazyload.bg-img(src="../assets/images/landing/demo/ecommerce.jpg" alt="")
+                        span
+              .col-lg-4.col-md-6.wow.pulse 
+                a(href="dashboard-03.html" target="_blank")
+                  .demo-box
+                    .d-flex 
+                      .dashboard-icon.bg-light-primary
+                        svg
+                          use(href='../assets/svg/icon-sprite.svg#landing-project')
+                      .flex-grow-1.ms-2
+                        h6 Project Dashboard
+                      .flex-shrink-0 
+                        span View Demo
+                        svg
+                          use(href='../assets/svg/icon-sprite.svg#landing-arrow')
+                    .classic-effect 
+                      div 
+                        img.img-fluid.blur-up.lazyload.bg-img(src="../assets/images/landing/demo/crypto.jpg" alt="")
+                        span 
+      // demo section end
+      //Core Feature start
+      section#core-feature.core-feature.section-py-space
+        .title
+          h2.gradient-10 Awesome Features
+        .custom-container
+          .row.feature-block
+              #feature-js.owl-carousel.owl-theme
+                .item
+                  .feature-box
+                      div
+                        .icon-wrraper
+                          i(data-feather="code")
+                        h4 Seamless Coding
+                        p We have crafted our templates very carefully and our code is W3C validated
+                .item
+                  .feature-box
+                      div
+                        .icon-wrraper
+                          i(data-feather="layout")
+                        h4 Lots of Table Example
+                        p We made sure that you get lots of table options to choose any example
+                .item
+                  .feature-box
+                      div
+                        .icon-wrraper
+                          i(data-feather="settings")
+                        h4 Easy to Customize
+                        p Our Template is easy to do any required changes customized
+                .item
+                  .feature-box
+                      div
+                        .icon-wrraper
+                          i(data-feather="upload-cloud")
+                        h4 Multiple File Uploads
+                        p Option Multiple Uploads for more than one file at one time.
+                .item
+                  .feature-box
+                      div
+                        .icon-wrraper
+                          i(data-feather="calendar")
+                        h4 Calendar Design
+                        p We have included Calendar application with Material art and other.
+                .item
+                  .feature-box
+                      div
+                        .icon-wrraper
+                          i(data-feather="image")
+                        h4 Gallery Options
+                        p Included gallery options for you to choose showcase products 
+                .item
+                  .feature-box
+                      div
+                        .icon-wrraper
+                          i(data-feather="cpu")
+                        h4 Editors
+                        p Options to select the editors that you are comfortable with
+                .item
+                  .feature-box
+                      div
+                        .icon-wrraper
+                          i(data-feather="sliders")
+                        h4 Owl carousel
+                        p Touch enabled jQuery plugin that lets you create a beautiful responsive carousel
+                .item
+                  .feature-box
+                      div
+                        .icon-wrraper
+                          i(data-feather="bold")
+                        h4 Bootstrap
+                        p Cloudui is builted with latest version of bootstrap with compatible 
+                .item
+                  .feature-box
+                      div
+                        .icon-wrraper
+                          i(data-feather="codepen")
+                        h4 Data visualisation
+                        p A lots of customised charts libraries in the data visualisation
+                .item
+                  .feature-box
+                      div
+                        .icon-wrraper
+                          i(data-feather="airplay")
+                        h4 Fully responsive
+                        p 100% fully responsive layout, It display well in any size of devices
+                .item
+                  .feature-box
+                      div
+                        .icon-wrraper
+                          i(data-feather="trello")
+                        h4 Rich components
+                        p A lots of UI components, plugins, widgets and bonus UI components.
+                .item
+                  .feature-box
+                      div
+                        .icon-wrraper
+                          i(data-feather="droplet")
+                        h4 3000s of icons
+                        p Over 3000+ all various type of icons to choose in template
+                .item
+                  .feature-box
+                      div
+                        .icon-wrraper
+                          i(data-feather="help-circle")
+                        h4 Support
+                        p we are always there as your backbone for any of your minor query
+                .item
+                  .feature-box
+                      div
+                        .icon-wrraper
+                          i(data-feather="trash-2")
+                        h4 Clean design
+                        p Clean and attractive design and error free pages in template.
+                .item
+                  .feature-box
+                      div
+                        .icon-wrraper
+                          i(data-feather="aperture")
+                        h4 Color templates
+                        p Dark and light templates available and other color also available
+      //Core Feature end
+      //Applications start
+      section#Applications.demo-section.section-py-space
+        .action-app
+          .shap-block
+            .rounded-shap.animate-bg-secondary
+              i
+              i
+              i
+        .title
+          h2.gradient-10 Usefull application
+        .custom-container
+          #aniimated-thumbnials.row.demo-block(itemscope='')
+            figure.reveal.col-xl-3.col-sm-6(itemprop='associatedMedia', itemscope='')
+              .demo-box
+                a(href="social-app.html" target="_blank")
+                  h5 Social App
+                  .img-wrraper
+                    img.img-fluid(src="../assets/images/landing/application/1.jpg" alt="")
+            figure.reveal.col-xl-3.col-sm-6(itemprop='associatedMedia', itemscope='')
+              .demo-box
+                a(href="knowledgebase.html" target="_blank")
+                  h5 Knowledgebase
+                  .img-wrraper
+                    img.img-fluid(src="../assets/images/landing/application/2.jpg" alt="")
+            figure.reveal.col-xl-3.col-sm-6(itemprop='associatedMedia', itemscope='')
+              .demo-box
+                a(href='support-ticket.html' target="_blank")
+                  h5 Support Ticket
+                  .img-wrraper
+                    img.img-fluid(src="../assets/images/landing/application/3.jpg" alt="")
+            figure.reveal.col-xl-3.col-sm-6(itemprop='associatedMedia', itemscope='')
+              .demo-box
+                a(href="email-application.html" target="_blank")
+                  h5 Email Application
+                  .img-wrraper
+                    img.img-fluid(src="../assets/images/landing/application/4.jpg" alt="")                         
+            figure.reveal.col-xl-3.col-sm-6(itemprop='associatedMedia', itemscope='')
+              .demo-box
+                a(href='to-do.html' target="_blank")
+                  h5 To-Do
+                  .img-wrraper
+                    img.img-fluid(src="../assets/images/landing/application/5.jpg" alt="")
+            figure.reveal.col-xl-3.col-sm-6(itemprop='associatedMedia', itemscope='')
+              .demo-box
+                a(href="job-cards-view.html" target="_blank")
+                  h5 Job Search
+                  .img-wrraper
+                    img.img-fluid(src="../assets/images/landing/application/6.jpg" alt="")
+            figure.reveal.col-xl-3.col-sm-6(itemprop='associatedMedia', itemscope='')
+              .demo-box
+                a(href="product-page.html" target="_blank")
+                  h5 Ecommerce
+                  .img-wrraper
+                    img.img-fluid(src="../assets/images/landing/application/7.jpg" alt="")                         
+            figure.reveal.col-xl-3.col-sm-6(itemprop='associatedMedia', itemscope='')
+              .demo-box
+                a(href="kanban.html" target="_blank")
+                  h5 Kanban
+                  .img-wrraper
+                    img.img-fluid(src="../assets/images/landing/application/8.jpg" alt="")                     
+            figure.reveal.col-xl-3.col-sm-6(itemprop='associatedMedia', itemscope='')
+              .demo-box
+                a(href="file-manager.html" target="_blank")
+                  h5 File Manager
+                  .img-wrraper
+                    img.img-fluid(src="../assets/images/landing/application/9.jpg" alt="")   
+            figure.reveal.col-xl-3.col-sm-6(itemprop='associatedMedia', itemscope='')
+              .demo-box
+                a(href="projects.html" target="_blank")
+                  h5 Project
+                  .img-wrraper
+                    img.img-fluid(src="../assets/images/landing/application/10.jpg" alt="")
+            figure.reveal.col-xl-3.col-sm-6(itemprop='associatedMedia', itemscope='')
+              .demo-box
+                a(href="contacts.html" target="_blank")
+                  h5 Contacts
+                  .img-wrraper
+                    img.img-fluid(src="../assets/images/landing/application/11.jpg" alt="")                          
+            figure.reveal.col-xl-3.col-sm-6(itemprop='associatedMedia', itemscope='')
+              .demo-box
+                a(href="private-chat.html" target="_blank")
+                  h5 Chat
+                  .img-wrraper
+                    img.img-fluid(src="../assets/images/landing/application/12.jpg" alt="")
+      //Applications end
+      // frameworks start
+      section#framework.framework.section-py-space
+        .custom-container
+          .row   
+            .col-sm-12.wow.pulse 
+              .title                       
+                h2.gradient-10 Top Frameworks
+            .col-sm-12.framworks                  
+              #pills-tabContent.tab-content
+                #pills-home.tab-pane.fade.show.active(role='tabpanel', aria-labelledby='pills-home-tab')
+                  ul.framworks-list
+                    li.bounceIn.wow
+                        div 
+                          img(src="../assets/images/landing/icon/html/bootstrap.png" alt="")
+                        h5 Bootstrap 5
+                    li.bounceIn.wow
+                        div 
+                          img(src="../assets/images/landing/icon/html/css.png" alt="")
+                        h5 CSS 3
+                    li.bounceIn.wow
+                        div 
+                          img(src="../assets/images/landing/icon/html/sass.png" alt="")
+                        h5 Sass
+                    li.bounceIn.wow
+                        div 
+                          img(src="../assets/images/landing/icon/html/pug.png" alt="")
+                        h5 Pug
+                    li.bounceIn.wow
+                        div 
+                          img(src="../assets/images/landing/icon/html/npm.png" alt="")
+                        h5 NPM
+                    li.bounceIn.wow
+                        div 
+                          img(src="../assets/images/landing/icon/html/gulp.png" alt="")
+                        h5 Gulp
+                    li.bounceIn.wow
+                        div 
+                          img(src="../assets/images/landing/icon/html/kit.png" alt="")
+                        h5 Starter Kit
+                    li.bounceIn.wow
+                        div 
+                          img(src="../assets/images/landing/icon/html/uikits.png" alt="")
+                        h5 40+ UI Kits
+                    li.bounceIn.wow
+                        div 
+                          img(src="../assets/images/landing/icon/html/layout.png" alt="")
+                        h5 8+ Layout
+                    li.bounceIn.wow
+                        div 
+                          img(src="../assets/images/landing/icon/html/builders.png" alt="")
+                        h5 Builders
+                    li.bounceIn.wow
+                        div 
+                          img(src="../assets/images/landing/icon/html/iconset.png" alt="")
+                        h5 11 Icon Sets
+                    li.bounceIn.wow
+                        div 
+                          img(src="../assets/images/landing/icon/html/forms.png" alt="")
+                        h5 Forms
+                    li.bounceIn.wow
+                        div 
+                          img(src="../assets/images/landing/icon/html/table.png" alt="")
+                        h5 Tables
+                    li.bounceIn.wow
+                        div 
+                          img(src="../assets/images/landing/icon/html/apps.png" alt="")
+                        h5 17+ Apps
+            // frameworks end
+      section.section-py-space.components#components
+        .action-components
+          .shap-block
+            .rounded-shap.animate-bg-secondary
+              i
+              i
+              i
+        .custom-container
+          .row   
+            .col-sm-12.wow.pulse 
+              .title                       
+                h2.gradient-10 Pre-Build Components
+            .col-sm-12
+              .row 
+                .col-xxl-2.col-xl-3.col-lg-3.col-md-4.col-sm-6
+                  .d-flex 
+                    span 
+                      svg
+                        use(href='../assets/svg/icon-sprite.svg#landing-button')
+                    h3 Button
+                .col-xxl-2.col-xl-3.col-lg-3.col-md-4.col-sm-6
+                  .d-flex 
+                    span 
+                      svg
+                        use(href='../assets/svg/icon-sprite.svg#landing-avatar')
+                    h3 Avatar
+                .col-xxl-2.col-xl-3.col-lg-3.col-md-4.col-sm-6
+                  .d-flex 
+                    span 
+                      svg
+                        use(href='../assets/svg/icon-sprite.svg#landing-badge')
+                    h3 Badge
+                .col-xxl-2.col-xl-3.col-lg-3.col-md-4.col-sm-6
+                  .d-flex 
+                    span 
+                      svg
+                        use(href='../assets/svg/icon-sprite.svg#landing-progress')
+                    h3 Progress
+                .col-xxl-2.col-xl-3.col-lg-3.col-md-4.col-sm-6
+                  .d-flex 
+                    span 
+                      svg
+                        use(href='../assets/svg/icon-sprite.svg#landing-alert')
+                    h3 Alert
+                .col-xxl-2.col-xl-3.col-lg-3.col-md-4.col-sm-6
+                  .d-flex 
+                    span 
+                      svg
+                        use(href='../assets/svg/icon-sprite.svg#landing-dropdwon')
+                    h3 Dropdown
+                .col-xxl-2.col-xl-3.col-lg-3.col-md-4.col-sm-6
+                  .d-flex 
+                    span 
+                      svg
+                        use(href='../assets/svg/icon-sprite.svg#landing-Collapse')
+                    h3 Collapse
+                .col-xxl-2.col-xl-3.col-lg-3.col-md-4.col-sm-6
+                  .d-flex 
+                    span 
+                      svg
+                        use(href='../assets/svg/icon-sprite.svg#landing-Tooltip')
+                    h3 Tooltip
+                .col-xxl-2.col-xl-3.col-lg-3.col-md-4.col-sm-6
+                  .d-flex 
+                    span 
+                      svg
+                        use(href='../assets/svg/icon-sprite.svg#landing-Divider')
+                    h3 Divider
+                .col-xxl-2.col-xl-3.col-lg-3.col-md-4.col-sm-6
+                  .d-flex 
+                    span 
+                      svg
+                        use(href='../assets/svg/icon-sprite.svg#landing-Breadcrumbs')
+                    h3 Breadcrumbs
+                .col-xxl-2.col-xl-3.col-lg-3.col-md-4.col-sm-6
+                  .d-flex 
+                    span 
+                      svg
+                        use(href='../assets/svg/icon-sprite.svg#landing-Pagination')
+                    h3 Pagination
+                .col-xxl-2.col-xl-3.col-lg-3.col-md-4.col-sm-6
+                  .d-flex 
+                    span 
+                      svg
+                        use(href='../assets/svg/icon-sprite.svg#landing-Carousel')
+                    h3 Carousel
+                .col-xxl-2.col-xl-3.col-lg-3.col-md-4.col-sm-6
+                  .d-flex 
+                    span 
+                      svg
+                        use(href='../assets/svg/icon-sprite.svg#landing-Radial')
+                    h3 Radial Progress
+                .col-xxl-2.col-xl-3.col-lg-3.col-md-4.col-sm-6
+                  .d-flex 
+                    span 
+                      svg
+                        use(href='../assets/svg/icon-sprite.svg#landing-Tabs')
+                    h3 Tabs
+                .col-xxl-2.col-xl-3.col-lg-3.col-md-4.col-sm-6
+                  .d-flex 
+                    span 
+                      svg
+                        use(href='../assets/svg/icon-sprite.svg#landing-Rating')
+                    h3 Rating
+                .col-xxl-2.col-xl-3.col-lg-3.col-md-4.col-sm-6
+                  .d-flex 
+                    span 
+                      svg
+                        use(href='../assets/svg/icon-sprite.svg#landing-select')
+                    h3 Select
+                .col-xxl-2.col-xl-3.col-lg-3.col-md-4.col-sm-6
+                  .d-flex 
+                    span 
+                      svg
+                        use(href='../assets/svg/icon-sprite.svg#landing-Switch')
+                    h3 Switch
+                .col-xxl-2.col-xl-3.col-lg-3.col-md-4.col-sm-6
+                  .d-flex 
+                    span 
+                      svg
+                        use(href='../assets/svg/icon-sprite.svg#landing-Checkboxs')
+                    h3 Checkboxs
+      // unic-cards start
+      section#faq-section.faq-section.section-py-space
+        .title
+          h2.gradient-10 Asked Questions
+        .custom-container
+          .row.faq-block
+            .col-xl-6.col-lg-6.col-sm-6
+              .faq-box
+                div
+                  h4 Q.Can I use this template for my client?
+                  p Yes definitely, but one template can be used only for the single client.
+            .col-xl-6.col-lg-6.col-sm-6
+              .faq-box
+                div
+                  h4 Q.Where will I get theme support?
+                  p After purchasing the theme, you can get the support over 
+                    a(href='http://pixelstrap.freshdesk.com' target='_blank') Here
+            .col-xl-6.col-lg-6.col-sm-6
+              .faq-box
+                div
+                  h4 Q.How long will I get support from your side?
+                  p You will be recieving support for 6 months from the date of purchase, however it can be extended upto 12 months if you wish to.
+            .col-xl-6.col-lg-6.col-sm-6
+              .faq-box
+                div
+                  h4 Q.Can I use this template for my client?
+                  p We have crafted our templates very carefully and our code is W3C validated.
+      // unic-cards end
+      section.counter-sec.section-py-space
+        .action-count
+          .shap-block
+            .rounded-shap.animate-bg-secondary
+              i
+              i
+              i
+        .custom-container
+          .row.counter-block
+            .col-lg-3.col-sm-6
+              .counter-box
+                div
+                  .count-number
+                    h3 12
+                  .count-detail
+                    h4 Workable App
+                    p Dunzo theme is comes with 10+ different clean modern & Usefull Application.
+            .col-lg-3.col-sm-6
+              .counter-box
+                div
+                  .count-number
+                    h3 3
+                  .count-detail
+                    h4 Layouts  
+                    p Dunzo theme has include light , dark , box & vertical layouts.                       
+            .col-lg-3.col-sm-6
+              .counter-box
+                div
+                  .count-number
+                    h3 42
+                  .count-detail
+                    h4 Components
+                    p Dunzo admin theme includes 42+ new and usefull Components.                          
+            .col-lg-3.col-sm-6
+              .counter-box
+                div
+                  .count-number
+                    h3 178
+                  .count-detail
+                    h4 pages
+                    p Dunzo theme is comes with 178+ different inner pages  
+      //footer start
+      section#footer.color-theme.landing-footer.section-py-space
+        .custom-container
+          .row
+            .col-12
+              .footer-contain
+                img.img-fluid(src="../assets/images/logo/logo-icon.png" alt="")
+                h2 Purchase Dunzo Template now & make your website more excellent!
+                ul.star-rate
+                  li
+                    i.fa.fa-star.font-warning
+                  li
+                    i.fa.fa-star.font-warning
+                  li
+                    i.fa.fa-star.font-warning
+                  li
+                    i.fa.fa-star.font-warning
+                  li
+                    i.fa.fa-star.font-warning
+                .btn-footer
+                  a(class="btn btn-lg btn-primary" target="_blank" href="index.html" data-bs-original-title="" title="") Check Now
+                  a(class="btn btn-lg btn-secondary" target="_blank" href="https://themeforest.net/user/pixelstrap/portfolio" data-bs-original-title="" title="") Buy Now
+                  a(class="btn btn-lg btn-success" target="_blank" href="https://themeforest.net/user/pixelstrap/portfolio" data-bs-original-title="" title="") Our Portfolio
+    include ../../components/landing-footer-files

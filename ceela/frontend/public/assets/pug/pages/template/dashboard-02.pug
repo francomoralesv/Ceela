@@ -1,0 +1,626 @@
+- var apex                  = true;
+- var theme_customizer      = true;
+- var dashboard_2           = true;
+- var animate               = true;
+- var vector_map            = true;
+- var page_vector_map       = true;
+- var owlcarousel           = true;
+- var page_owlcarousel      = true;
+- var page_datatable        = true;
+- var datatable             = true;
+- var page_datatable1       = true;
+- var counter               = true;
+- var sidebar               = true;
+- var slick                 = true;
+- var header_slider         = true;
+- var scrollbar             = true;
+doctype html
+html(lang='en')
+  include ../../components/header-files
+  body
+    include ../../components/loader
+    include ../../components/taptop
+    // page-wrapper Start
+    #pageWrapper.page-wrapper.compact-wrapper
+      include ../../components/header
+      // Page Body Start
+      .page-body-wrapper
+        include ../../components/sidebar
+        .page-body
+          .container-fluid
+            .page-title
+              .row
+                .col-sm-6.p-0
+                  h3 
+                    | Ecommerce Dashboard
+                .col-sm-6.p-0
+                  ol.breadcrumb
+                    li.breadcrumb-item
+                      a(href='index.html')
+                        svg.stroke-icon
+                          use(href='../assets/svg/icon-sprite.svg#stroke-home')
+                    li.breadcrumb-item Dashboard
+                    li.breadcrumb-item.active E-Commerce
+          // Container-fluid starts
+          .container-fluid.ecommerce-dashboard
+            .row.bg-light.p-4.mb-4
+              .col-xl-2.col-xl-33.col-sm-6.box-col-4.ps-0
+                .card.mb-0.online-order
+                  .card-header.pb-0
+                    .d-flex
+                      .order.bg-light-primary
+                        span
+                        svg
+                          use(href='../assets/svg/icon-sprite.svg#basket')
+                      .arrow-chart
+                        svg
+                          use(href='../assets/svg/icon-sprite.svg#arrow-chart')
+                        span.font-danger -6.3%
+                    .online
+                      span Online Order
+                      h2 16,2873
+                  .card-body.pt-0.ps-2.pe-2
+                    #online-chart  
+              .col-xl-2.col-xl-33.col-sm-6.box-col-4.pedding-sm
+                .card.mb-0.online-order
+                  .card-header.offline-order
+                    .d-flex
+                      .order.bg-light-secondary
+                        span
+                        svg
+                          use(href='../assets/svg/icon-sprite.svg#delivery')
+                      .arrow-chart
+                        svg
+                          use(href='../assets/svg/icon-sprite.svg#arrow-chart-up')
+                        span.font-success +8.3%
+                    .online
+                      span Offline Order
+                      h2 62,5461
+                  .card-body.pt-0.ps-2.pe-2
+                    #offline-chart.offline-chart
+              .col-xl-2.col-xl-33.col-sm-6.box-col-4.pedding-end.pedding-sm-start.pedding-sm
+                .card.mb-0.online-order
+                  .card-header.revenue-order.pb-0
+                    .d-flex
+                      .order.bg-light-danger
+                        span
+                        svg
+                          use(href='../assets/svg/icon-sprite.svg#increased')
+                      .arrow-chart
+                        svg
+                          use(href='../assets/svg/icon-sprite.svg#arrow-chart')
+                        span.font-danger -3.5%
+                    .online
+                      span Total Revenue
+                      h2 45,9561
+                  .card-body.pt-0.ps-2.pe-2
+                    #Revenue-chart.revenue
+              .col-xl-2.col-xl-40.col-sm-6.box-col-5.pedding-start.pedding-sm
+                .card.mb-0.margin-bottom.online-order
+                  .card-header.feedback-card.pb-0
+                    .d-flex
+                      .order.bg-light-success
+                        span
+                        svg
+                          use(href='../assets/svg/icon-sprite.svg#feedback')
+                      .arrow-chart
+                        svg
+                          use(href='../assets/svg/icon-sprite.svg#arrow-chart-up')
+                        span.font-success +2.4%
+                    .online
+                      span Feedback
+                      h2 75,5653
+                  .card-body
+                    .user-details.customers
+                      ul 
+                        li.d-inline-block
+                          img.rounded-circle(src="../assets/images/dashboard-2/user/1.png", alt="user")
+                        li.d-inline-block
+                          img.rounded-circle(src="../assets/images/dashboard-2/user/2.png", alt="user")
+                        li.d-inline-block
+                          img.rounded-circle(src="../assets/images/dashboard-2/user/3.png", alt="user")
+                        li.d-inline-block
+                          img.rounded-circle(src="../assets/images/dashboard-2/user/4.png", alt="user")
+                    .progress
+                      .progress-bar.bg-success(role='progressbar', style='width: 50%', aria-valuenow='10', aria-valuemin='0', aria-valuemax='100')
+              .col-xl-4.col-xl-70.box-col-7.pe-0.pedding-sm
+                .card.mb-0.margin-bottom.sales-event
+                  .card-body.pt-0
+                    .d-flex
+                      .event
+                        h3 Sales Event Calendar
+                        p Bland it curability id vel vitae Ullamcorper sapien ante quam id. Vulputate viverra dictum.
+                      .sale
+                        img(src="../assets/images/dashboard-2/event.png", alt="")
+                    .set-sales
+                      a.btn.btn-primary.mt-2(href="calendar-basic.html") Set Sales Events
+                      a.btn.discount.mt-2(href="product.html") Discount
+            .row 
+              .col-xl-3.col-xl-50.box-col-6.proorder-xl-1
+                .card.state
+                  .card-header.pb-0
+                    .header-top
+                      h4 Sale Top Countries
+                      .dropdown.icon-dropdown
+                        button#userdropdown.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                          i.icon-more-alt
+                        .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown')
+                          a.dropdown-item(href='#') Weekly
+                          a.dropdown-item(href='#') Monthly
+                          a.dropdown-item(href='#') Yearly
+                  .card-body.mt-0
+                    ul.d-flex
+                      li.balance-card
+                        .Countries
+                          span.rounded-pill
+                          h5 China
+                        h2.mt-1.mb-0 90%
+                      li.balance-card
+                        .Countries
+                          span.rounded-pill
+                          h5 Hong Kong
+                        h2.mt-1.mb-0 70%
+                    ul.d-flex.mt-4
+                      li.balance-card
+                        .Countries
+                          span.rounded-pill
+                          h5 Great Britain
+                        h2.mt-1.mb-0 60%
+                      li.balance-card.me-3
+                        .Countries
+                          span.rounded-pill
+                          h5 Australia
+                        h2.mt-1.mb-0 50%
+                    #world-map2.jvector-map-height
+              .col-xl-6.col-xl-100.box-col-12.proorder-xl-3
+                .card
+                  .card-header.pb-0
+                    .header-top
+                      h4 Recent Order 
+                      .dropdown.icon-dropdown
+                        button#userdropdown1.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                          i.icon-more-alt
+                        .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown1')
+                          a.dropdown-item(href='#') Weekly
+                          a.dropdown-item(href='#') Monthly
+                          a.dropdown-item(href='#') Yearly
+                  .card-body.pt-0.recent
+                    .table-responsive.custom-scrollbar
+                      table#product-order.table.display(style='width:100%')
+                        thead
+                          tr
+                            th
+                              .form-check
+                                input.form-check-input(type='checkbox' value='')
+                                label.form-check-label
+                            th Product Name
+                            th Customer Name
+                            th Date
+                            th Status
+                            th Total
+                        tbody
+                            tr
+                              td
+                                .form-check
+                                  input.form-check-input(type='checkbox' value='')
+                                  label.form-check-label
+                              td
+                                .d-flex
+                                  .flex-shrink-0
+                                    img(src='../assets/images/dashboard-2/product/1.png' alt="")
+                                  .flex-grow-1.ms-2
+                                    a(href="list-products.html")
+                                      h6 Rocky Shoes 
+                                      span #Gh3649K
+                              td 
+                                h6 Rocky Shoes 
+                                span White Crater
+                              td Oct 24, 2023
+                              td 
+                                button.badge.badge-light-primary.rounded-pill.txt-primary Paid
+                              td $21.56
+                            tr
+                              td
+                                .form-check
+                                  input.form-check-input(type='checkbox' value='')
+                                  label.form-check-label
+                              td
+                                .d-flex
+                                  .flex-shrink-0
+                                    img(src='../assets/images/dashboard-2/product/2.png' alt="")
+                                  .flex-grow-1.ms-2
+                                    a(href="list-products.html")
+                                      h6 iPhone 14 Pro
+                                      span #A5647KB
+                              td 
+                                h6 iPhone 14 Pro
+                                span World Bandung
+                              td Nov 13, 2023
+                              td 
+                                button.badge.badge-light-secondary.rounded-pill.txt-secondary Pending
+                              td $65.36
+                            tr
+                              td
+                                .form-check
+                                  input.form-check-input(type='checkbox' value='')
+                                  label.form-check-label
+                              td
+                                .d-flex
+                                  .flex-shrink-0
+                                    img(src='../assets/images/dashboard-2/product/3.png' alt="")
+                                  .flex-grow-1.ms-2
+                                    a(href="list-products.html")
+                                      h6 Stylish Watches
+                                      span #KO093M
+                              td 
+                                h6 Stylish Watches
+                                span Jalan Braga
+                              td Sep 16, 2023
+                              td 
+                                button.badge.badge-light-primary.rounded-pill.txt-primary Paid
+                              td $95.48
+                            tr
+                              td
+                                .form-check
+                                  input.form-check-input(type='checkbox' value='')
+                                  label.form-check-label
+                              td
+                                .d-flex
+                                  .flex-shrink-0
+                                    img(src='../assets/images/dashboard-2/product/4.png' alt="")
+                                  .flex-grow-1.ms-2
+                                    a(href="list-products.html")
+                                      h6 Laptop Backpack
+                                      span #KMG403
+                              td 
+                                h6 Rachel Green
+                                span Gedung Sate
+                              td Dec 20, 2023
+                              td 
+                                button.badge.badge-light-danger.rounded-pill.txt-danger Overdue
+                              td $95.78
+              .col-xl-3.col-xl-50.box-col-6.proorder-xl-2
+                .card.categories-chart
+                  .card-header.pb-0
+                    .header-top
+                      h4 Categories by Sales
+                      .dropdown.icon-dropdown
+                        button#userdropdown2.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                          i.icon-more-alt
+                        .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown2')
+                          a.dropdown-item(href='#') Weekly
+                          a.dropdown-item(href='#') Monthly
+                          a.dropdown-item(href='#') Yearly
+                    .row.mt-2
+                      .col-6.p-0
+                        #Categories-chart
+                      .col-6.categories-sales
+                        .d-flex.gap-2  
+                          .flex-shrink-0
+                            span.bg-primary 
+                          .flex-grow-1 
+                            h6 Income
+                          h5 $21,654
+                        .d-flex.gap-2  
+                          .flex-shrink-0
+                            span.bg-secondary 
+                          .flex-grow-1 
+                            h6 Visitors
+                          h5 $62,842
+                        .d-flex.gap-2  
+                          .flex-shrink-0
+                            span.bg-danger 
+                          .flex-grow-1 
+                            h6 Expense
+                          h5 $37,210
+                  .card-body.p-0
+                    .total-earn
+                      h2 $3,512,201
+                      h6 Total Earned
+                    #Earned-chart.earned
+              .row.pe-0.proorder-xl-4
+                .col-xl-5.col-xl-100.box-col-12
+                  .row
+                    .col-xl-12 
+                      .card.categories-chart
+                        .card-header.pb-0
+                          .header-top
+                            h4 Sale Statistic
+                            .dropdown.icon-dropdown
+                              button#userdropdown3.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                                i.icon-more-alt
+                              .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown3')
+                                a.dropdown-item(href='#') Weekly
+                                a.dropdown-item(href='#') Monthly
+                                a.dropdown-item(href='#') Yearly
+                        .card-body.p-0
+                          #total-project
+                  .row
+                    .col-xl-12
+                      .row 
+                        .col-md-7
+                          .card.order-overview
+                            .card-header.pb-0
+                              .header-top
+                                h4 Order Overview
+                                .dropdown.icon-dropdown
+                                  button#userdropdown4.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                                    i.icon-more-alt
+                                  .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown4')
+                                    a.dropdown-item(href='#') Weekly
+                                    a.dropdown-item(href='#') Monthly
+                                    a.dropdown-item(href='#') Yearly
+                            .card-body
+                              .d-flex
+                                h2.me-2 ($3,512,201)
+                                h6 Total Revenue
+                              .total-revenue
+                                .d-flex
+                                  h5.me-2 40
+                                  span (Online Order)
+                                .progress
+                                  .progress-bar.bg-primary(role='progressbar', style='width: 50%', aria-valuenow='10', aria-valuemin='0', aria-valuemax='100')
+                              .total-revenue
+                                .d-flex
+                                  h5.me-2 60
+                                  span (Offline Order)
+                                .progress
+                                  .progress-bar.bg-secondary(role='progressbar', style='width: 70%', aria-valuenow='10', aria-valuemin='0', aria-valuemax='100')
+                              .total-revenue
+                                .d-flex
+                                  h5.me-2 20
+                                  span (Cash On Develery)
+                                .progress
+                                  .progress-bar.bg-danger(role='progressbar', style='width: 30%', aria-valuenow='10', aria-valuemin='0', aria-valuemax='100')
+                        .col-md-5
+                          .row 
+                            .col-xl-12 
+                              .card.monthly-chart
+                                .card-header.pb-0
+                                  .header-top
+                                    h4 Monthly Sale
+                                    .dropdown.icon-dropdown
+                                      button#userdropdown5.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                                        i.icon-more-alt
+                                      .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown5')
+                                        a.dropdown-item(href='#') Weekly
+                                        a.dropdown-item(href='#') Monthly
+                                        a.dropdown-item(href='#') Yearly
+                                .card-body 
+                                  .d-flex
+                                    .monthly
+                                      h5 Growth
+                                      h3 $7,234
+                                    #monthlychart.growth
+                            .col-xl-12 
+                              .card.invoices
+                                .card-header.pb-0
+                                  .header-top
+                                    h4 Invoices
+                                    .dropdown.icon-dropdown
+                                      button#userdropdown6.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                                        i.icon-more-alt
+                                      .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown6')
+                                        a.dropdown-item(href='#') Weekly
+                                        a.dropdown-item(href='#') Monthly
+                                        a.dropdown-item(href='#') Yearly
+                                .card-body
+                                  .d-flex 
+                                    .flex-shrink-0 
+                                      h5 Due
+                                      h3 $8,727
+                                    .flex-grow-1 
+                                      h5 Overdue
+                                      h3 $8,727
+                .col-xl-7.col-xl-100.box-col-12
+                  .row
+                    .col-xl-12.pe-0 
+                      .card.unlock
+                        .card-body
+                          .d-flex
+                            p Unlock Machine Learning insights below. try our premium service for 1 month free!
+                            button.btn.btn-primary UNLOCK
+                  .row
+                    .col-xl-12
+                      .row 
+                        .col-lg-5
+                          .card
+                            .card-header.pb-0
+                              .header-top
+                                h4 Recent Activity
+                                .dropdown.icon-dropdown
+                                  button#userdropdown7.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                                    i.icon-more-alt
+                                  .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown7')
+                                    a.dropdown-item(href='#') Weekly
+                                    a.dropdown-item(href='#') Monthly
+                                    a.dropdown-item(href='#') Yearly
+                            .card-body.recent-activity
+                              ul 
+                                li.mt-0.d-flex
+                                  .activity-line
+                                  img(src="../assets/images/dashboard-2/user/5.png", alt="")
+                                  .ms-2
+                                    span 2hrs Ago
+                                    p Today, I'm very happy about myself, because I realized my dreams.
+                                    .recent-images  
+                                      ul 
+                                        li 
+                                          .recent-img-wrap
+                                            img(src="../assets/images/dashboard-2/product/5.png", alt="")
+                                        li 
+                                          .recent-img-wrap
+                                            img(src="../assets/images/dashboard-2/product/6.png", alt="")
+                                        li 
+                                          .recent-img-wrap
+                                            img(src="../assets/images/dashboard-2/product/3.png", alt="")
+                                li.d-flex
+                                  img(src="../assets/images/dashboard-2/user/6.png", alt="")
+                                  .ms-2
+                                    span 5 hrs Ago
+                                    p That is the key of this collection, being yourself.Don't be into trends.
+                                li.d-flex.align-items-baseline.ms-3
+                                  .badge-dot-danger
+                                  .ms-4
+                                    span 25 Oct,2022
+                                li.d-flex
+                                  img(src="../assets/images/dashboard-2/user/7.png", alt="")
+                                  .ms-2
+                                    span 12 hrs Ago
+                                    p I am no longer concerned with sensation and innovation, but with the perfection my style.
+                                li.d-flex
+                                  img(src="../assets/images/dashboard-2/user/8.png", alt="")
+                                  .ms-2
+                                    span 12:00 pm
+                                    p You have added new product in Clothe  text of the Printing and tyesetting industry.
+                        .col-lg-7
+                          .row 
+                            .col-xl-12.pe-0
+                              .card.new-customers
+                                .card-header.pb-0
+                                  .header-top
+                                    h4 New Customers
+                                    .dropdown.icon-dropdown
+                                      button#userdropdown8.btn.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                                        i.icon-more-alt
+                                      .dropdown-menu.dropdown-menu-end(aria-labelledby='userdropdown8')
+                                        a.dropdown-item(href='#') Weekly
+                                        a.dropdown-item(href='#') Monthly
+                                        a.dropdown-item(href='#') Yearly
+                                .card-body 
+                                  .table-responsive.custom-scrollbar
+                                    table.table.display(style='width:100%')
+                                      tbody
+                                        tr
+                                          td
+                                            .d-flex
+                                              img(src='../assets/images/dashboard-2/user/9.png' alt="")
+                                              .flex-grow-1.ms-2
+                                                a(href="user-profile.html")
+                                                  span Selena Wagner
+                                                  h5 @selena.oi 
+                                              .active-status.active-online
+                                          td iPhone 14 Pro
+                                          td Oct 24, 2023
+                                          td $239
+                                        tr
+                                          td
+                                            .d-flex
+                                              img(src='../assets/images/dashboard-2/user/10.png' alt="")
+                                              .flex-grow-1.ms-2
+                                                a(href="user-profile.html")
+                                                  span Walter Reuter
+                                                  h5 @walter.me 
+                                              .active-status.active-online
+                                          td Stylish Watches
+                                          td Sep 16, 2023
+                                          td $326
+                                        tr
+                                          td
+                                            .d-flex
+                                              img(src='../assets/images/dashboard-2/user/11.png' alt="")
+                                              .flex-grow-1.ms-2
+                                                a(href="user-profile.html")
+                                                  span Leopold Ebert
+                                                  h5 @larissa.gb 
+                                              .active-status.active-online
+                                          td Rocky Shoes 
+                                          td Dec 20, 2023
+                                          td $985
+                            .col-xl-12.pe-0
+                              .card.discount-card 
+                                .card-body
+                                  #owl-carousel-dashboard.owl-carousel.owl-theme
+                                    .special-offer 
+                                      .d-flex
+                                        .flex-shrink-0
+                                          h3 IPhone 14 Pro 
+                                          h5 
+                                            | $21.45
+                                            del $65.40
+                                          h6.bg-light Special Discount 
+                                          p Deal of the  Day From 
+                                            span $48 
+                                          ul 
+                                            li 
+                                              h5 28
+                                              span Days
+                                            li 
+                                              h5 03
+                                              span Hours
+                                            li 
+                                              h5 14
+                                              span Min
+                                            li 
+                                              h5 45
+                                              span Sec
+                                        img(src='../assets/images/dashboard-2/product/7.png' alt="")
+                                      .product-slider
+                                        .shap-block
+                                          .rounded-shap.animate-bg-secondary
+                                            i
+                                            i
+                                            i
+                                    .special-offer 
+                                      .d-flex
+                                        .flex-shrink-0
+                                          h3 Apple Airpods 
+                                          h5 
+                                            | $20.35
+                                            del $35.43
+                                          h6.bg-light Special Discount 
+                                          p Deal of the  Day From 
+                                            span $38 
+                                          ul 
+                                            li 
+                                              h5 20
+                                              span Days
+                                            li 
+                                              h5 05
+                                              span Hours
+                                            li 
+                                              h5 30
+                                              span Min
+                                            li 
+                                              h5 15
+                                              span Sec
+                                        img(src='../assets/images/dashboard-2/product/8.png' alt="")
+                                      .product-slider
+                                        .shap-block
+                                          .rounded-shap.animate-bg-secondary
+                                            i
+                                            i
+                                            i
+                                    .special-offer 
+                                      .d-flex
+                                        .flex-shrink-0
+                                          h3 Apple Watch Series 7 
+                                          h5 
+                                            | $25.30
+                                            del $45.40
+                                          h6.bg-light Special Discount 
+                                          p Deal of the  Day From 
+                                            span $25 
+                                          ul 
+                                            li 
+                                              h5 15
+                                              span Days
+                                            li 
+                                              h5 06
+                                              span Hours
+                                            li 
+                                              h5 18
+                                              span Min
+                                            li 
+                                              h5 30
+                                              span Sec
+                                        img(src='../assets/images/dashboard-2/product/9.png' alt="")
+                                      .product-slider
+                                        .shap-block
+                                          .rounded-shap.animate-bg-secondary
+                                            i
+                                            i
+                                            i
+          // Container-fluid Ends
+        include ../../components/footer
+    include ../../components/footer-files
