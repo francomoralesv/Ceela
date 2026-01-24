@@ -1,7 +1,41 @@
-.claude
-.idea
-node_modules/
-.next
-.dist
-venv
+# Environment variables
 .env
+.env.local
+.env.*.local
+
+# Database
+backup.sql
+backups/
+db/
+*.db
+*.sqlite
+
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Configuration (review before adding)
+config/*.yaml
+config/*.yml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Temporary files
+temporal/
+*.tmp
+
+# File listings
+listado.txt
