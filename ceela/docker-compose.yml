@@ -15,14 +15,6 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     restart: unless-stopped
-    deploy:
-      resources:
-        limits:
-          cpus: '2'
-          memory: 3G
-        reservations:
-          cpus: '1'
-          memory: 2G
     command: >
       postgres
       -c max_connections=200
@@ -100,17 +92,12 @@ services:
       - AWS_PLACE_INDEX_NAME=CeelaIndexPlace
       - AWS_REGION=us-east-2
       - UV_THREADPOOL_SIZE=8
+      - MAINTENANCE_MODE=0
     volumes:
       - ./frontend/public:/frontend/public/
+    ports:
+      - "8080:3000"
     restart: unless-stopped
-    deploy:
-      resources:
-        limits:
-          cpus: '2'
-          memory: 1G
-        reservations:
-          cpus: '0.5'
-          memory: 512M
     networks:
       - ceela-network
     extra_hosts:
@@ -148,15 +135,7 @@ services:
     volumes:
       - ./:/app/
     restart: unless-stopped
-    cpus: '12'
-    deploy:
-      resources:
-        limits:
-          cpus: '12'
-          memory: 7G
-        reservations:
-          cpus: '12'
-          memory: 6G
+    mem_limit: 2g
     healthcheck:
       test: ["CMD-SHELL", "python -c 'import urllib.request; urllib.request.urlopen(\"http://localhost:8000/healthz\")' || exit 1"]
       interval: 30s
