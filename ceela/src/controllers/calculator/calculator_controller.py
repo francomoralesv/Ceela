@@ -1,12 +1,19 @@
+import json
 import logging  # Add this import for logging
 import os
 import shutil  # Add this import for file existence check
 
+import pandas as pd
 from fastapi import APIRouter, Depends, HTTPException, Query, Request
+from fastapi.responses import FileResponse
 from requests import Session
 from starlette.responses import JSONResponse, StreamingResponse
 
+from src.calc_engine.enclosure_processor import EnclosureProcessor
+from src.calc_engine.input_data_calculator import InputDataCalculator
 from src.controllers.calculator.datos import get_all_walls_with_layers
+from src.services.calculation_result.calculation_result_service import upsert_calculation_result
+from src.services.calculator.heating_config_service import HeatingConfigService
 from src.services.calculator.results.result_calculator import ResultCalculator
 from src.services.calculator.results.validation_utils import validate_project_requirements
 from src.services.database.db_connection import get_db
@@ -125,6 +132,28 @@ async def download_files(project_id: int,
         media_type="application/zip",
         headers={
             "Content-Disposition": f"attachment; filename={project_id}_files.zip"}
+    )
+
+
+@calculator_router.get("/calculator/download/{project_id}/{enclosure_id}", tags=["Calculator"])
+async def download_enclosure_file(project_id: int,
+                                  enclosure_id: int,
+                                  db: Session = Depends(get_db),
+                                  current_user: dict = Depends(verify_token)):
+    # Verify access to the project before serving files
+    get_project_by_id(current_user, project_id, db)
+
+    file_path = os.path.join("public", "uploads", str(project_id), f"{enclosure_id}.data.xlsx")
+    if not os.path.exists(file_path):
+        raise HTTPException(
+            status_code=404,
+            detail=f"No se encontró el archivo del recinto {enclosure_id} para el proyecto {project_id}."
+        )
+
+    return FileResponse(
+        file_path,
+        media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        filename=f"proj_{project_id}_rec_{enclosure_id}.data.xlsx",
     )
 
 
@@ -269,6 +298,151 @@ async def calculatev3(project_id: int,
 
     except Exception as e:
         logger.error(f"Error calculando proyecto v3 {project_id}: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error calculando proyecto: {str(e)}")
+
+
+@calculator_router.get("/calculate_final_unificado/{project_id}", tags=["Calculator"])
+async def calculate_final_unificado(
+    project_id: int,
+    db: Session = Depends(get_db),
+    force_data: bool = Query(False, description="Forzar recálculo de datos"),
+    current_user: dict = Depends(verify_token),
+):
+    """
+    Endpoint unificado que ejecuta la lógica de v2 (procesamiento de recintos)
+    y v3 (cálculo de indicadores) en un solo flujo, sin depender del cache de Redis.
+    """
+    try:
+        logger.info(f"[UNIFICADO] force_data={force_data} (type: {type(force_data)})")
+
+        # ── PASO 1: Preparar carpetas (lógica de v2) ──
+        calculator = ResultCalculator(project_id)
+        calculator.prepare()
+        if not force_data:
+            calculator.clear()
+
+        # ── PASO 2: Procesar recintos – lógica de execute_v2 ──
+        input_data = InputDataCalculator(project_id=project_id, db=db)
+        enclosure_processor = EnclosureProcessor(data=input_data, db=db)
+        await enclosure_processor.process_enclosures(force_data)
+        enclosure_processor.post_process_enclosures()
+        logger.info("[UNIFICADO] Procesamiento de recintos completado.")
+
+        # ── PASO 3: Obtener datos directamente de memoria (sin cache) – lógica de execute_v3 ──
+        superficie_dict = {}
+        df_list = []
+        df_list_base = []
+
+        for enclosure in input_data.enclosures:
+            # Área desde la memoria del processor (no Redis)
+            area = enclosure_processor.area_results.get(enclosure.id)
+            superficie_dict[enclosure.id] = area
+
+            # DataFrame de demanda desde la memoria del processor (no Redis)
+            df_r = enclosure_processor.demand_results.get(enclosure.id)
+            if df_r is None:
+                logger.warning(f"[UNIFICADO] Sin datos de demanda para recinto {enclosure.id}, se omite.")
+                continue
+
+            if isinstance(df_r, pd.DataFrame):
+                df_r = df_r.copy()
+                df_r['ID_Recinto'] = enclosure.id
+            else:
+                try:
+                    df_r = pd.DataFrame(df_r)
+                    df_r['ID_Recinto'] = enclosure.id
+                except Exception:
+                    logger.warning(f"[UNIFICADO] No se pudo convertir DF de recinto {enclosure.id}")
+                    continue
+
+            if enclosure.is_base:
+                df_list_base.append(df_r)
+            else:
+                df_list.append(df_r)
+
+        if not df_list:
+            logger.warning("[UNIFICADO] No hay DF de recintos propuestos.")
+            return JSONResponse(content={"final_indicators": {}, "result_by_enclosure": []})
+
+        df_resultado_all = pd.concat(df_list, ignore_index=True)
+
+        # ── PASO 4: Calcular resultados por recinto – lógica de execute_v3 ──
+        coef_consumo = HeatingConfigService.get_consumo_heating_config_constant(project_id, db)
+        SER = 2.95
+        coef_combustible = HeatingConfigService.get_combustible_heating_config_constant(project_id, db)
+        SCOP = 1.0
+
+        result_by_enclosure_v2 = calculator.calculate_result_by_enclosure_v2(
+            df_resultado_all, input_data.monthly_processed_data_df, superficie_dict,
+            SCOP=SCOP, coef_consumo=coef_consumo, coef_combustible=coef_combustible,
+            SER=SER, db=db
+        )
+        if isinstance(result_by_enclosure_v2, str):
+            result_by_enclosure_v2 = json.loads(result_by_enclosure_v2)
+
+        proposed_list = [r for r in result_by_enclosure_v2 if not r.get("is_base", False)]
+
+        # Procesar recintos base si existen
+        base_list = []
+        if df_list_base:
+            df_base_all = pd.concat(df_list_base, ignore_index=True)
+            result_by_enclosure_base = calculator.calculate_result_by_enclosure_v2(
+                df_base_all, input_data.monthly_processed_data_df, superficie_dict,
+                SCOP=SCOP, coef_consumo=coef_consumo, coef_combustible=coef_combustible,
+                SER=SER, db=db
+            )
+            if isinstance(result_by_enclosure_base, str):
+                result_by_enclosure_base = json.loads(result_by_enclosure_base)
+            base_list = [r for r in result_by_enclosure_base if r.get("is_base", False)]
+
+        # ── PASO 5: Indicadores finales ──
+        co2_eq_energia_primaria = calculator.get_co2_eq_energia_primaria(project_id, db=db)
+        demanda_acs = calculator.get_demand_acs(project_id, db=db)
+
+        final_indicators = calculator.calculate_final_indicators(
+            proposed_list, base_list if base_list else None,
+            co2_eq_energia_primaria, demanda_acs
+        )
+
+        all_enclosures = proposed_list + base_list
+        result = {
+            "final_indicators": final_indicators,
+            "result_by_enclosure": all_enclosures,
+            "base_by_enclosure": base_list,
+            "co2_eq_energia_primaria": co2_eq_energia_primaria,
+        }
+
+        # ── PASO 6: Guardar en BD ──
+        if current_user:
+            try:
+                co2_eq = {"total": co2_eq_energia_primaria}
+                calculation_result = upsert_calculation_result(
+                    project_id=project_id,
+                    final_indicators=final_indicators,
+                    result_by_enclosure=all_enclosures,
+                    co2_eq=co2_eq,
+                    current_user=current_user,
+                    db=db,
+                )
+                logger.info(f"[UNIFICADO] Resultado guardado con ID {calculation_result.get('id')}")
+            except Exception as e:
+                import traceback
+                traceback.print_exc()
+                logger.error(f"[UNIFICADO] Error guardando resultado: {str(e)}")
+
+        # Filtrar is_base para la respuesta (igual que v3)
+        if isinstance(result, dict) and "result_by_enclosure" in result:
+            result["result_by_enclosure"] = [
+                item for item in (result.get("result_by_enclosure") or [])
+                if not item.get("is_base", False)
+            ]
+
+        return JSONResponse(content=result)
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        logger.error(f"[UNIFICADO] Error calculando proyecto {project_id}: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Error calculando proyecto: {str(e)}")
 
 
