@@ -20,6 +20,7 @@ from src.services.calculator.weather.weather_data_service import WeatherProcesso
 route_weather_controller = APIRouter(tags=["Weather"])
 
 UPLOAD_DIR = "public/uploads"
+RADIACIONES_DIR = "public/radiaciones"
 
 
 def calculate_file_hash(file_content: bytes) -> str:
@@ -48,6 +49,15 @@ class UUIDEncoder(json.JSONEncoder):
         if isinstance(obj, datetime):
             return obj.isoformat()
         return json.JSONEncoder.default(self, obj)
+
+
+def safe_remove_file(file_path: str) -> bool:
+    if not file_path:
+        return False
+    if os.path.exists(file_path):
+        os.remove(file_path)
+        return True
+    return False
 @route_weather_controller.post("/upload-by-coordinates", tags=["Weather"])
 async def upload_file_by_coordinates(
         file: UploadFile = File(...),
@@ -171,6 +181,54 @@ async def download_file(file_id: int, db: Session = Depends(get_db)):
         metadata.location,
         filename=f"{os.path.splitext(metadata.name)[0]}_v{metadata.version}.parquet"
     )
+
+
+@route_weather_controller.delete("/delete/{file_id}", tags=["Weather"])
+async def delete_weather_file(file_id: int, db: Session = Depends(get_db)):
+    metadata = db.query(WeatherMetadata).filter(
+        WeatherMetadata.id == file_id).first()
+    if not metadata:
+        raise HTTPException(404, "File not found")
+
+    derived_original_path = None
+    derived_monthly_path = None
+    radiaciones_path = None
+    if metadata.location:
+        base_filename = os.path.splitext(os.path.basename(metadata.location))[0]
+        radiaciones_path = os.path.join(
+            RADIACIONES_DIR, f"{base_filename}_promedios.parquet")
+        if metadata.location.endswith(".processed.parquet"):
+            base_path = metadata.location[: -len(".processed.parquet")]
+            derived_original_path = f"{base_path}{metadata.extension or '.xlsx'}"
+            derived_monthly_path = f"{base_path}_monthly.processed.parquet"
+
+    upload_original_path = os.path.join(
+        UPLOAD_DIR, f"{metadata.name}{metadata.extension}")
+
+    original_deleted = safe_remove_file(upload_original_path)
+    if not original_deleted:
+        original_deleted = safe_remove_file(derived_original_path)
+
+    monthly_deleted = safe_remove_file(metadata.complementary)
+    if not monthly_deleted:
+        monthly_deleted = safe_remove_file(derived_monthly_path)
+
+    deleted = {
+        "climate": safe_remove_file(metadata.location),
+        "monthly": monthly_deleted,
+        "original": original_deleted,
+        "radiaciones": safe_remove_file(radiaciones_path),
+    }
+
+    try:
+        db.delete(metadata)
+        db.commit()
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(
+            500, f"Error deleting metadata in database: {str(e)}")
+
+    return {"message": "File deleted successfully", "deleted": deleted}
 
 
 @route_weather_controller.get("/list", tags=["Weather"], response_model=List[WeatherMetadata])
