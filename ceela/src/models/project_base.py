@@ -15,7 +15,8 @@ class ProjectBase(SQLModel):
     owner_lastname: str
     project_metadata: Dict[str, str] = Field(default={}, sa_column=Column(JSONB, nullable=True))
     residential_type: Optional[str] = Field(default=None)
-    
+    created_at: Optional[str] = None
+
     @field_validator("name_project", "owner_name", "owner_lastname", "country", mode="before")
     def validate_fields(cls, v, info):
         field_name_translated = translations.get(info.field_name, info.field_name)  
