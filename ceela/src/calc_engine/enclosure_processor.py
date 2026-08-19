@@ -17,6 +17,7 @@ from src.services.datos.materials import get_material_details, get_nodos_area_by
     get_translucent_window_area_by_enclosure
 from src.services.datos.recintos import get_info_recinto
 from src.services.datos.suma_puentes import get_htr_wk_by_project
+from src.services.datos.suma_puentes import get_htr_wk_by_enclosure_id
 from src.services.project.project_service import update_project
 from src.services.sol.sol_recinto import calcular_parametros_solares_recinto_parquet
 from src.utils.constants import public_folder
@@ -30,6 +31,8 @@ class EnclosureProcessor:
         self.db = db
         self.data = data
         self.output_processed_files={}
+        self.demand_results = {}   # in-memory: {enclosure_id: df_demand}
+        self.area_results = {}     # in-memory: {enclosure_id: area}
 
     def __calculate_demand(self, df: pd.DataFrame) -> pd.DataFrame:
         if "G_DHU" not in df.columns and "G_HU" in df.columns:
@@ -99,8 +102,8 @@ class EnclosureProcessor:
                         areas_for_py=areas_for_py,
                         window_total_for_areas_py=window_total_for_areas_py,
                         sol_file=self.data.get_sol_parquet_file(enclosure.id),
-                        thermal_bridges_sum=get_htr_wk_by_project(
-                            self.data.project_id, self.db) + 0.001,
+                        thermal_bridges_sum=get_htr_wk_by_enclosure_id(
+                            enclosure.id, self.db) + 0.001,
                         area=area_recinto, altura=altura, db=self.db)
                     py_process_input.prepare()
                     clima_df=py_process_input.clima_df
@@ -135,6 +138,7 @@ class EnclosureProcessor:
                     result_df,txt_path = self.process_output_simple(self.data.project_id)
                     df_demand = self.process_demand(result_df,txt_path)
                     logger.info(f"🚀Processed enclosure  [df_demand] [{df_demand}]")
+                    self.demand_results[enclosure.id] = df_demand  # in-memory
                     self.put_demand_cache(enclosure.id, df_demand)
                     processed_enclosures.append(True)
                 except Exception as e:
@@ -148,6 +152,7 @@ class EnclosureProcessor:
         cache = get_redis_sync()
         cache.set(key, value)
     def cache_enclosure_area_altura(self, enclosure_id, area, altura):
+        self.area_results[enclosure_id] = area  # in-memory
         cache = get_redis_sync()
         cache.set(f'enclosure:{enclosure_id}:area', area)
         cache.set(f'enclosure:{enclosure_id}:altura', altura)
